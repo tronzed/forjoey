@@ -1,8 +1,29 @@
+import { useEffect, useState } from "react";
+
 export default function Header() {
+
+    const [movieListData, setMovieListData] = useState();
+    const [bannerData, setBannerData] = useState();
+
+    const getMovie = async () => {
+        const res = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=809cc654f2b83dc754aa801cc1302ac1`);
+        const data = await res.json();
+        setMovieListData(data?.results);
+
+        const randomNumber = Math.floor(Math.random() * 19) + 1;
+        setBannerData(data?.results[randomNumber]);
+
+    }
+
+    useEffect(() => {
+        getMovie();
+    }, [])
 
     return (
 
         <>
+
+        {console.log(bannerData,'bannerData')}
 
             {/* BEGIN | Header */}
             <header className="ht-header full-width-hd">
@@ -119,9 +140,7 @@ export default function Header() {
                                                 </span>
                                             </div>
                                             <h1>
-                                                <a href="#">
-                                                    guardians of the
-                                                    <br />
+                                                <a href="#">{bannerData?.title}
                                                     galaxy <span>2015</span>
                                                 </a>
                                             </h1>
@@ -156,12 +175,12 @@ export default function Header() {
                                             <div className="mv-details">
                                                 <p>
                                                     <i className="ion-android-star" />
-                                                    <span>7.4</span> /10
+                                                    <span>{bannerData?.vote_average}</span> /10
                                                 </p>
                                                 <ul className="mv-infor">
                                                     <li> Run Time: 2h21’ </li>
                                                     <li> Rated: PG-13</li>
-                                                    <li> Release: 1 May 2015</li>
+                                                    <li> Release: {bannerData?.release_date}</li>
                                                 </ul>
                                             </div>
                                             <div className="btn-transform transform-vertical">
@@ -181,7 +200,7 @@ export default function Header() {
                                     <div className="col-md-4 col-sm-12 col-xs-12">
                                         <div className="mv-img-2">
                                             <a href="#">
-                                                <img src="images/uploads/poster1.jpg" alt="" />
+                                                <img src={`https://image.tmdb.org/t/p/w500${bannerData?.poster_path}`} alt="" />
                                             </a>
                                         </div>
                                     </div>
