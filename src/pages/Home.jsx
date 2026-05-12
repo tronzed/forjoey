@@ -2,6 +2,7 @@
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { useEffect, useState } from 'react'
+import { getMovie, getTv } from '../utils/function'
 
 const Home = () => {
 
@@ -10,30 +11,24 @@ const Home = () => {
     const [tvListData, setTvListData] = useState();
     const [bannerData, setBannerData] = useState();
 
-    const getMovie = async () => {
-        const res = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=809cc654f2b83dc754aa801cc1302ac1`);
-        const data = await res.json();
-        setMovieListData(data?.results);
+    const getMovieData = async () => {
+        const res = await getMovie();
+        setMovieListData(res);
 
         const randomNumber = Math.floor(Math.random() * 19) + 1;
-        setBannerData(data?.results[randomNumber]);
-
-        console.log(bannerData);
-        console.log(data?.results);
-
+        setBannerData(res[randomNumber]);
     }
 
-    const getTv = async () => {
-        const res = await fetch(`https://api.themoviedb.org/3/tv/popular?api_key=809cc654f2b83dc754aa801cc1302ac1`);
-        const data = await res.json();
-        setTvListData(data?.results);
+    const getTvData = async () => {
+        const res = await getTv();
+        setTvListData(res);
     }
 
 
 
     useEffect(() => {
-        getMovie();
-        getTv();
+        getMovieData();
+        getTvData();
     }, [])
 
     return (
