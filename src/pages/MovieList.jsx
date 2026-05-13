@@ -2,6 +2,7 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { useEffect, useState } from 'react'
 import { getMovie, getTv } from '../utils/function'
+import { Link } from "react-router-dom";
 
 export default function MovieList() {
 
@@ -20,6 +21,9 @@ export default function MovieList() {
     return (
 
         <>
+
+        {console.log(movieListData,'dddd')}
+
             <Header />
 
             <div className="page-single">
@@ -55,10 +59,10 @@ export default function MovieList() {
                                             <div className="movie-item-style-2 movie-item-style-1">
                                                 <img src={`https://image.tmdb.org/t/p/w500${item?.poster_path}`} alt="" />
                                                 <div className="hvr-inner">
-                                                    <a href="moviesingle.html">
+                                                    <Link to={`/movSingle/${item?.id}`}>
                                                         {" "}
                                                         Read more <i className="ion-android-arrow-dropright" />{" "}
-                                                    </a>
+                                                    </Link>
                                                 </div>
                                                 <div className="mv-item-infor">
                                                     <h6>

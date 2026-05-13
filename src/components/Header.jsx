@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
+import logo from '../assets/logo1.png'
+
 export default function Header() {
 
     const [movieListData, setMovieListData] = useState();
@@ -47,7 +49,7 @@ export default function Header() {
                             <a href="index-2.html">
                                 <img
                                     className="logo"
-                                    src="images/logo1.png"
+                                    src={logo}
                                     alt=""
                                     width={119}
                                     height={58}
@@ -127,7 +129,7 @@ export default function Header() {
 
 
 
-            {loc.pathname == '/' ? (
+            {loc.pathname === '/' ? (
 
                 <div className="slider sliderv2">
                     <div className="container">
@@ -223,11 +225,18 @@ export default function Header() {
                     </div>
                 </div>
 
+            ) : loc.pathname === '/movsingle' ? (
+
+                <>
+
+
+                </>
+
             ) : (
 
                 <>
 
-                    <div className="hero common-hero">
+                    <div className="hero common-hero hide_me">
                         <div className="container">
                             <div className="row">
                                 <div className="col-md-12">
@@ -247,7 +256,6 @@ export default function Header() {
                             </div>
                         </div>
                     </div>
-
 
                 </>
 
