@@ -17,3 +17,11 @@
 .mv-single-hero {
     background-size: cover;
 }
+
+.mvcast-item .cast-it .cast-left img {
+    max-width: 50px;
+}
+
+.movie-item-style-2 .mv-item-infor h6 a {
+    white-space: nowrap;
+}

@@ -9,6 +9,9 @@ export default function Header() {
     const [bannerData, setBannerData] = useState();
     const loc = useLocation();
 
+
+
+
     const getMovie = async () => {
         const res = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=809cc654f2b83dc754aa801cc1302ac1`);
         const data = await res.json();
@@ -17,7 +20,8 @@ export default function Header() {
         const randomNumber = Math.floor(Math.random() * 19) + 1;
         setBannerData(data?.results[randomNumber]);
 
-    }
+
+    }    
 
     useEffect(() => {
         getMovie();
@@ -225,7 +229,7 @@ export default function Header() {
                     </div>
                 </div>
 
-            ) : loc.pathname === '/movsingle' ? (
+            ) : loc.pathname.split('/')[1] === 'movSingle' ? (
 
                 <>
 
@@ -236,7 +240,7 @@ export default function Header() {
 
                 <>
 
-                    <div className="hero common-hero hide_me">
+                    <div className="hero common-hero ">
                         <div className="container">
                             <div className="row">
                                 <div className="col-md-12">

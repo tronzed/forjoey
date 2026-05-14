@@ -11,6 +11,10 @@ export default function MovieSingle() {
 
     const [movieData, setMovieData] = useState();
 
+    const [writer, setWriter] = useState();
+    const [director, setDirector] = useState();
+
+
     const getData = async (id) => {
 
         const res = await getSingleMovie(id);
@@ -18,6 +22,12 @@ export default function MovieSingle() {
         setMovieData(res)
 
         console.log(res, 'ddd');
+
+        const dataDirector = res?.credits?.crew.filter((item) => (item?.job === 'Director'))
+        const dataWriter = res?.credits?.crew.filter((item) => (item?.job === 'Screenplay'))
+
+        setDirector(dataDirector);
+        setWriter(dataWriter);
 
     }
 
@@ -30,7 +40,7 @@ export default function MovieSingle() {
         <>
             <Header />
 
-            <div className="hero mv-single-hero" style={{backgroundImage:`url(https://image.tmdb.org/t/p/original${movieData?.backdrop_path})`}}>
+            <div className="hero mv-single-hero" style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${movieData?.backdrop_path})` }}>
                 <div className="container">
                     <div className="row">
                         <div className="col-md-12">
@@ -118,7 +128,7 @@ export default function MovieSingle() {
                                     <div className="rate">
                                         <i className="ion-android-star" />
                                         <p>
-                                            <span>8.1</span> /10
+                                            <span>{movieData?.vote_average}</span> /10
                                             <br />
                                             <span className="rv">56 Reviews</span>
                                         </p>
@@ -215,62 +225,22 @@ export default function MovieSingle() {
                                                         </div>
                                                         {/* movie cast */}
                                                         <div className="mvcast-item">
-                                                            <div className="cast-it">
-                                                                <div className="cast-left">
-                                                                    <img src="../images/uploads/cast1.jpg" alt="" />
-                                                                    <a href="#">Robert Downey Jr.</a>
-                                                                </div>
-                                                                <p>... Robert Downey Jr.</p>
-                                                            </div>
-                                                            <div className="cast-it">
-                                                                <div className="cast-left">
-                                                                    <img src="../images/uploads/cast2.jpg" alt="" />
-                                                                    <a href="#">Chris Hemsworth</a>
-                                                                </div>
-                                                                <p>... Thor</p>
-                                                            </div>
-                                                            <div className="cast-it">
-                                                                <div className="cast-left">
-                                                                    <img src="../images/uploads/cast3.jpg" alt="" />
-                                                                    <a href="#">Mark Ruffalo</a>
-                                                                </div>
-                                                                <p>... Bruce Banner/ Hulk</p>
-                                                            </div>
-                                                            <div className="cast-it">
-                                                                <div className="cast-left">
-                                                                    <img src="../images/uploads/cast4.jpg" alt="" />
-                                                                    <a href="#">Chris Evans</a>
-                                                                </div>
-                                                                <p>... Steve Rogers/ Captain America</p>
-                                                            </div>
-                                                            <div className="cast-it">
-                                                                <div className="cast-left">
-                                                                    <img src="../images/uploads/cast5.jpg" alt="" />
-                                                                    <a href="#">Scarlett Johansson</a>
-                                                                </div>
-                                                                <p>... Natasha Romanoff/ Black Widow</p>
-                                                            </div>
-                                                            <div className="cast-it">
-                                                                <div className="cast-left">
-                                                                    <img src="../images/uploads/cast6.jpg" alt="" />
-                                                                    <a href="#">Jeremy Renner</a>
-                                                                </div>
-                                                                <p>... Clint Barton/ Hawkeye</p>
-                                                            </div>
-                                                            <div className="cast-it">
-                                                                <div className="cast-left">
-                                                                    <img src="../images/uploads/cast7.jpg" alt="" />
-                                                                    <a href="#">James Spader</a>
-                                                                </div>
-                                                                <p>... Ultron</p>
-                                                            </div>
-                                                            <div className="cast-it">
-                                                                <div className="cast-left">
-                                                                    <img src="../images/uploads/cast9.jpg" alt="" />
-                                                                    <a href="#">Don Cheadle</a>
-                                                                </div>
-                                                                <p>... James Rhodes/ War Machine</p>
-                                                            </div>
+
+                                                            {
+                                                                movieData?.credits?.cast.map((item, key) => (
+                                                                    <>
+                                                                        <div className="cast-it">
+                                                                            <div className="cast-left">
+                                                                                <img src={`https://image.tmdb.org/t/p/w200/${item?.profile_path}`} alt="" />
+                                                                                <a href="#">{item?.original_name}.</a>
+                                                                            </div>
+                                                                            <p>{item?.character}</p>
+                                                                        </div>
+                                                                    </>
+                                                                ))
+                                                            }
+
+
                                                         </div>
                                                         <div className="title-hd-sm">
                                                             <h4>User reviews</h4>
@@ -316,40 +286,53 @@ export default function MovieSingle() {
                                                     </div>
                                                     <div className="col-md-4 col-xs-12 col-sm-12">
                                                         <div className="sb-it">
+
+
+
+
+
                                                             <h6>Director: </h6>
                                                             <p>
-                                                                <a href="#">Joss Whedon</a>
+                                                                {director?.map((item, key) => (
+                                                                    <>
+                                                                        <a href="#">{item?.name}, </a>
+                                                                    </>
+                                                                ))}
                                                             </p>
                                                         </div>
                                                         <div className="sb-it">
                                                             <h6>Writer: </h6>
                                                             <p>
-                                                                <a href="#">Joss Whedon,</a> <a href="#">Stan Lee</a>
-                                                            </p>
-                                                        </div>
-                                                        <div className="sb-it">
-                                                            <h6>Stars: </h6>
-                                                            <p>
-                                                                <a href="#">Robert Downey Jr,</a>{" "}
-                                                                <a href="#">Chris Evans,</a>{" "}
-                                                                <a href="#">Mark Ruffalo,</a>
-                                                                <a href="#"> Scarlett Johansson</a>
+                                                                {writer?.map((item, key) => (
+                                                                    <>
+                                                                        <a href="#">{item?.name}, </a>
+                                                                    </>
+                                                                ))}
                                                             </p>
                                                         </div>
                                                         <div className="sb-it">
                                                             <h6>Genres:</h6>
                                                             <p>
-                                                                <a href="#">Action, </a> <a href="#"> Sci-Fi,</a>{" "}
-                                                                <a href="#">Adventure</a>
+
+                                                                {
+
+                                                                    movieData?.genres?.map((item, key) => (
+                                                                        <>
+                                                                            <a href="#">{item?.name}, </a>
+                                                                        </>
+                                                                    ))
+
+                                                                }
+
                                                             </p>
                                                         </div>
                                                         <div className="sb-it">
                                                             <h6>Release Date:</h6>
-                                                            <p>May 1, 2015 (U.S.A)</p>
+                                                            <p>{movieData?.release_date} ({movieData?.production_countries[0]?.name})</p>
                                                         </div>
                                                         <div className="sb-it">
                                                             <h6>Run Time:</h6>
-                                                            <p>141 min</p>
+                                                            <p>{movieData?.runtime} min</p>
                                                         </div>
                                                         <div className="sb-it">
                                                             <h6>MMPA Rating:</h6>
