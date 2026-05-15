@@ -31,6 +31,54 @@ export default function MovieSingle() {
 
     }
 
+
+    const [overviewTab, setOverviewTab] = useState(true);
+    const [reviewsTab, setReviewsTab] = useState(false);
+    const [castTab, setCastTab] = useState(false);
+    const [mediaTab, setMediaTab] = useState(false);
+    const [relatedTab, setRelatedTab] = useState(false);
+
+
+    const tabHandle = (pass) => {
+
+        console.log('fweererrg');
+
+        if ('overview' === pass) {
+            setOverviewTab(true);
+            setReviewsTab(false);
+            setCastTab(false);
+            setMediaTab(false);
+            setRelatedTab(false);
+        } else if ('reviews' === pass) {
+            setOverviewTab(false);
+            setReviewsTab(true);
+            setCastTab(false);
+            setMediaTab(false);
+            setRelatedTab(false);
+        } else if ('cast' === pass) {
+            setOverviewTab(false);
+            setReviewsTab(false);
+            setCastTab(true);
+            setMediaTab(false);
+            setRelatedTab(false);
+        } else if ('media' === pass) {
+            setOverviewTab(false);
+            setReviewsTab(false);
+            setCastTab(false);
+            setMediaTab(true);
+            setRelatedTab(false);
+        } else if ('related' === pass) {
+            setOverviewTab(false);
+            setReviewsTab(false);
+            setCastTab(false);
+            setMediaTab(false);
+            setRelatedTab(true);
+        }
+
+    }
+
+
+
     useEffect(() => {
         getData(id);
     }, [])
@@ -99,7 +147,7 @@ export default function MovieSingle() {
                                 <h1 className="bd-hd">
                                     {movieData?.original_title} <span>{movieData?.release_date}</span>
                                 </h1>
-                                <div className="social-btn">
+                                <div className="social-btn hide_me">
                                     <a href="#" className="parent-btn">
                                         <i className="ion-heart" /> Add to Favorite
                                     </a>
@@ -149,24 +197,24 @@ export default function MovieSingle() {
                                 <div className="movie-tabs">
                                     <div className="tabs">
                                         <ul className="tab-links tabs-mv">
-                                            <li className="active">
-                                                <a href="#overview">Overview</a>
+                                            <li className={overviewTab ? "active" : ""} onClick={() => { tabHandle('overview') }}>
+                                                <a>Overview</a>
                                             </li>
-                                            <li>
-                                                <a href="#reviews"> Reviews</a>
+                                            <li className={reviewsTab ? "active" : ""} onClick={() => { tabHandle('reviews') }}>
+                                                <a> Reviews</a>
                                             </li>
-                                            <li>
-                                                <a href="#cast"> Cast &amp; Crew </a>
+                                            <li className={castTab ? "active" : ""} onClick={() => { tabHandle('cast') }}>
+                                                <a> Cast &amp; Crew </a>
                                             </li>
-                                            <li>
-                                                <a href="#media"> Media</a>
+                                            <li className={mediaTab ? "active" : ""} onClick={() => { tabHandle('media') }}>
+                                                <a> Media</a>
                                             </li>
-                                            <li>
-                                                <a href="#moviesrelated"> Related Movies</a>
+                                            <li className={relatedTab ? "active" : ""} onClick={() => { tabHandle('related') }}>
+                                                <a> Related Movies</a>
                                             </li>
                                         </ul>
                                         <div className="tab-content">
-                                            <div id="overview" className="tab active">
+                                            <div id="overview" style={{ display: overviewTab ? "block" : "none" }} onClick={() => { tabHandle('overview') }}>
                                                 <div className="row">
                                                     <div className="col-md-8 col-sm-12 col-xs-12">
                                                         <p>
@@ -328,7 +376,7 @@ export default function MovieSingle() {
                                                         </div>
                                                         <div className="sb-it">
                                                             <h6>Release Date:</h6>
-                                                            <p>{movieData?.release_date} ({movieData?.production_countries[0]?.name})</p>
+                                                            <p>{movieData?.release_date} ({movieData?.origin_country})</p>
                                                         </div>
                                                         <div className="sb-it">
                                                             <h6>Run Time:</h6>
@@ -338,33 +386,10 @@ export default function MovieSingle() {
                                                             <h6>MMPA Rating:</h6>
                                                             <p>PG-13</p>
                                                         </div>
-                                                        <div className="sb-it">
-                                                            <h6>Plot Keywords:</h6>
-                                                            <p className="tags">
-                                                                <span className="time">
-                                                                    <a href="#">superhero</a>
-                                                                </span>
-                                                                <span className="time">
-                                                                    <a href="#">marvel universe</a>
-                                                                </span>
-                                                                <span className="time">
-                                                                    <a href="#">comic</a>
-                                                                </span>
-                                                                <span className="time">
-                                                                    <a href="#">blockbuster</a>
-                                                                </span>
-                                                                <span className="time">
-                                                                    <a href="#">final battle</a>
-                                                                </span>
-                                                            </p>
-                                                        </div>
-                                                        <div className="ads">
-                                                            <img src="../images/uploads/ads1.png" alt="" />
-                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div id="reviews" className="tab review">
+                                            <div id="reviews" style={{ display: reviewsTab ? "block" : "none" }} className="tab review" onClick={() => { tabHandle('reviews') }}>
                                                 <div className="row">
                                                     <div className="rv-hd">
                                                         <div className="div">
@@ -660,7 +685,7 @@ export default function MovieSingle() {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div id="cast" className="tab">
+                                            <div id="cast" style={{ display: castTab ? "block" : "none" }} className='tab' onClick={() => { tabHandle('cast') }}>
                                                 <div className="row">
                                                     <h3>Cast &amp; Crew of</h3>
                                                     <h2>Avengers: Age of Ultron</h2>
@@ -851,7 +876,7 @@ export default function MovieSingle() {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div id="media" className="tab">
+                                            <div id="media" style={{ display: mediaTab ? "block" : "none" }} className='tab' onClick={() => { tabHandle('media') }}>
                                                 <div className="row">
                                                     <div className="rv-hd">
                                                         <div>
@@ -1209,7 +1234,7 @@ export default function MovieSingle() {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div id="moviesrelated" className="tab">
+                                            <div id="moviesrelated" style={{ display: relatedTab ? "block" : "none" }} className='tab' onClick={() => { tabHandle('related') }}>
                                                 <div className="row">
                                                     <h3>Related Movies To</h3>
                                                     <h2>Skyfall: Quantum of Spectre</h2>

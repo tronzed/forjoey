@@ -9,7 +9,7 @@ export const getMovie = async () => {
 
 // get single movie data 
 export const getSingleMovie = async (id) => {
-    const res = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=809cc654f2b83dc754aa801cc1302ac1&append_to_response=credits`);
+    const res = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=809cc654f2b83dc754aa801cc1302ac1&append_to_response=credits,images,videos`);
     const data = await res.json();
     return data;
 }
