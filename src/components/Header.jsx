@@ -9,8 +9,7 @@ export default function Header() {
     const [bannerData, setBannerData] = useState();
     const loc = useLocation();
 
-
-
+    const [mobToggle, setMobToggle] = useState(false);
 
     const getMovie = async () => {
         const res = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=809cc654f2b83dc754aa801cc1302ac1`);
@@ -19,9 +18,13 @@ export default function Header() {
 
         const randomNumber = Math.floor(Math.random() * 19) + 1;
         setBannerData(data?.results[randomNumber]);
+    }
 
 
-    }    
+    const menuToggleHandle = () => {
+        setMobToggle(!mobToggle);
+    }
+
 
     useEffect(() => {
         getMovie();
@@ -30,7 +33,10 @@ export default function Header() {
     return (
 
         <>
+            {
+                console.log(bannerData, 'bannerData')
 
+            }
 
             {/* BEGIN | Header */}
             <header className="ht-header full-width-hd">
@@ -39,9 +45,10 @@ export default function Header() {
                         {/* Brand and toggle get grouped for better mobile display */}
                         <div className="navbar-header logo">
                             <div
-                                className="navbar-toggle"
+                                className={`navbar-toggle`}
                                 data-toggle="collapse"
                                 data-target="#bs-example-navbar-collapse-1"
+                                onClick={menuToggleHandle}
                             >
                                 <span className="sr-only">Toggle navigation</span>
                                 <div id="nav-icon1">
@@ -50,7 +57,7 @@ export default function Header() {
                                     <span />
                                 </div>
                             </div>
-                            <a href="index-2.html">
+                            <Link to="/">
                                 <img
                                     className="logo"
                                     src={logo}
@@ -58,11 +65,11 @@ export default function Header() {
                                     width={119}
                                     height={58}
                                 />
-                            </a>
+                            </Link>
                         </div>
                         {/* Collect the nav links, forms, and other content for toggling */}
                         <div
-                            className="collapse navbar-collapse flex-parent"
+                            className={`collapse navbar-collapse flex-parent ${mobToggle ? "collapse in" : ""}`}
                             id="bs-example-navbar-collapse-1"
                         >
                             <ul className="nav navbar-nav flex-child-menu menu-left">
@@ -144,7 +151,7 @@ export default function Header() {
                                     <div className="row">
                                         <div className="col-md-8 col-sm-12 col-xs-12">
                                             <div className="title-in">
-                                                <div className="cate">
+                                                <div className="cate hide_me">
                                                     <span className="blue">
                                                         <a href="#">Sci-fi</a>
                                                     </span>
@@ -201,14 +208,9 @@ export default function Header() {
                                                 </div>
                                                 <div className="btn-transform transform-vertical">
                                                     <div>
-                                                        <a href="#" className="item item-1 redbtn">
-                                                            more detail
-                                                        </a>
-                                                    </div>
-                                                    <div>
-                                                        <a href="#" className="item item-2 redbtn hvrbtn">
-                                                            more detail
-                                                        </a>
+                                                        <Link to={`/movSingle/${bannerData?.id}`} className="item  redbtn">
+                                                            More Detail
+                                                        </Link>
                                                     </div>
                                                 </div>
                                             </div>

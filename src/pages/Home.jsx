@@ -3,6 +3,7 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { useEffect, useState } from 'react'
 import { getMovie, getTv } from '../utils/function'
+import { Link } from 'react-router-dom'
 
 const Home = () => {
 
@@ -60,25 +61,20 @@ const Home = () => {
                                                     <div className='col-sm-2'>
                                                         <div className="slide-it">
                                                             <div className="movie-item">
-                                                                <div className="mv-img">
-                                                                    <img src={`https://image.tmdb.org/t/p/w500${item?.poster_path}`} alt="" />
-                                                                </div>
-                                                                <div className="hvr-inner">
-                                                                    <a href="moviesingle.html">
-                                                                        {" "}
-                                                                        Read more{" "}
-                                                                        <i className="ion-android-arrow-dropright" />{" "}
-                                                                    </a>
-                                                                </div>
-                                                                <div className="title-in">
-                                                                    <h6>
-                                                                        <a href="#">{item?.original_title}</a>
-                                                                    </h6>
-                                                                    <p>
-                                                                        <i className="ion-android-star" />
-                                                                        <span>7.4</span> /10
-                                                                    </p>
-                                                                </div>
+                                                                <Link to={`/movSingle/${item?.id}`}>
+                                                                    <div className="mv-img">
+                                                                        <img src={`https://image.tmdb.org/t/p/w500${item?.poster_path}`} alt="" />
+                                                                    </div>
+                                                                    <div className="title-in">
+                                                                        <h6>
+                                                                            <a href="#">{item?.original_title}</a>
+                                                                        </h6>
+                                                                        <p>
+                                                                            <i className="ion-android-star" />
+                                                                            <span>7.4</span> /10
+                                                                        </p>
+                                                                    </div>
+                                                                </Link>
                                                             </div>
                                                         </div>
                                                     </div>

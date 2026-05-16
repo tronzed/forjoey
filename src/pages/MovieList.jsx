@@ -14,7 +14,7 @@ export default function MovieList() {
 
     }
 
-      useEffect(() => {
+    useEffect(() => {
         getMovieData();
     }, [])
 
@@ -22,7 +22,7 @@ export default function MovieList() {
 
         <>
 
-        {console.log(movieListData,'dddd')}
+            {console.log(movieListData, 'dddd')}
 
             <Header />
 
@@ -57,13 +57,9 @@ export default function MovieList() {
                                     <>
                                         <div className="col-sm-2">
                                             <div className="movie-item-style-2 movie-item-style-1">
-                                                <img src={`https://image.tmdb.org/t/p/w500${item?.poster_path}`} alt="" />
-                                                <div className="hvr-inner">
-                                                    <Link to={`/movSingle/${item?.id}`}>
-                                                        {" "}
-                                                        Read more <i className="ion-android-arrow-dropright" />{" "}
-                                                    </Link>
-                                                </div>
+                                                <Link to={`/movSingle/${item?.id}`}>
+                                                    <img src={`https://image.tmdb.org/t/p/w500${item?.poster_path}`} alt="" />
+                                                </Link>
                                                 <div className="mv-item-infor">
                                                     <h6>
                                                         <a href="#">{item?.original_title}</a>

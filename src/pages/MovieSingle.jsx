@@ -3,7 +3,7 @@ import Footer from "../components/Footer";
 
 import { getSingleMovie } from '../utils/function'
 import { useEffect, useState } from "react";
-import { parsePath, useParams } from "react-router-dom";
+import { Link, parsePath, useParams } from "react-router-dom";
 
 export default function MovieSingle() {
 
@@ -81,6 +81,7 @@ export default function MovieSingle() {
 
     useEffect(() => {
         getData(id);
+        window.scrollTo(0, 0);
     }, [])
 
 
@@ -109,7 +110,7 @@ export default function MovieSingle() {
                             <div className="movie-img sticky-sb">
                                 <img src={`https://image.tmdb.org/t/p/w500/${movieData?.poster_path}`} alt="" />
                                 <div className="movie-btn">
-                                    <div className="btn-transform transform-vertical red">
+                                    <div className="btn-transform transform-vertical red hide_me">
                                         <div>
                                             <a href="#" className="item item-1 redbtn">
                                                 {" "}
@@ -126,7 +127,7 @@ export default function MovieSingle() {
                                             </a>
                                         </div>
                                     </div>
-                                    <div className="btn-transform transform-vertical">
+                                    <div className="btn-transform transform-vertical hide_me">
                                         <div>
                                             <a href="#" className="item item-1 yellowbtn">
                                                 {" "}
@@ -381,10 +382,6 @@ export default function MovieSingle() {
                                                         <div className="sb-it">
                                                             <h6>Run Time:</h6>
                                                             <p>{movieData?.runtime} min</p>
-                                                        </div>
-                                                        <div className="sb-it">
-                                                            <h6>MMPA Rating:</h6>
-                                                            <p>PG-13</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -881,7 +878,7 @@ export default function MovieSingle() {
                                                     <div className="rv-hd">
                                                         <div>
                                                             <h3>Videos &amp; Photos of</h3>
-                                                            <h2>Skyfall: Quantum of Spectre</h2>
+                                                            <h2>{movieData?.original_title}</h2>
                                                         </div>
                                                     </div>
                                                     <div className="title-hd-sm">
@@ -889,348 +886,69 @@ export default function MovieSingle() {
                                                             Videos <span>(8)</span>
                                                         </h4>
                                                     </div>
-                                                    <div className="mvsingle-item media-item">
-                                                        <div className="vd-item">
-                                                            <div className="vd-it">
-                                                                <img
-                                                                    className="vd-img"
-                                                                    src="images/uploads/vd-item1.jpg"
-                                                                    alt=""
-                                                                />
-                                                                <a
-                                                                    className="fancybox-media hvr-grow"
-                                                                    href="https://www.youtube.com/embed/o-0hcF97wy0"
-                                                                    rel="playlist"
-                                                                >
-                                                                    <img src="../images/uploads/play-vd.png" alt="" />
-                                                                </a>
-                                                            </div>
-                                                            <div className="vd-infor">
-                                                                <h6>
-                                                                    {" "}
-                                                                    <a href="#">Trailer: Watch New Scenes</a>
-                                                                </h6>
-                                                                <p className="time"> 1: 31</p>
-                                                            </div>
-                                                        </div>
-                                                        <div className="vd-item">
-                                                            <div className="vd-it">
-                                                                <img
-                                                                    className="vd-img"
-                                                                    src="images/uploads/vd-item2.jpg"
-                                                                    alt=""
-                                                                />
-                                                                <a
-                                                                    className="fancybox-media hvr-grow"
-                                                                    href="https://www.youtube.com/embed/o-0hcF97wy0"
-                                                                    rel="playlist"
-                                                                >
-                                                                    <img src="../images/uploads/play-vd.png" alt="" />
-                                                                </a>
-                                                            </div>
-                                                            <div className="vd-infor">
-                                                                <h6>
-                                                                    {" "}
-                                                                    <a href="#">Featurette: “Avengers Re-Assembled</a>
-                                                                </h6>
-                                                                <p className="time"> 1: 03</p>
-                                                            </div>
-                                                        </div>
-                                                        <div className="vd-item">
-                                                            <div className="vd-it">
-                                                                <img
-                                                                    className="vd-img"
-                                                                    src="images/uploads/vd-item3.jpg"
-                                                                    alt=""
-                                                                />
-                                                                <a
-                                                                    className="fancybox-media hvr-grow"
-                                                                    href="https://www.youtube.com/embed/o-0hcF97wy0"
-                                                                    rel="playlist"
-                                                                >
-                                                                    <img src="../images/uploads/play-vd.png" alt="" />
-                                                                </a>
-                                                            </div>
-                                                            <div className="vd-infor">
-                                                                <h6>
-                                                                    {" "}
-                                                                    <a href="#">Interview: Robert Downey Jr</a>
-                                                                </h6>
-                                                                <p className="time"> 3:27</p>
-                                                            </div>
-                                                        </div>
-                                                        <div className="vd-item">
-                                                            <div className="vd-it">
-                                                                <img
-                                                                    className="vd-img"
-                                                                    src="images/uploads/vd-item4.jpg"
-                                                                    alt=""
-                                                                />
-                                                                <a
-                                                                    className="fancybox-media hvr-grow"
-                                                                    href="https://www.youtube.com/embed/o-0hcF97wy0"
-                                                                    rel="playlist"
-                                                                >
-                                                                    <img src="../images/uploads/play-vd.png" alt="" />
-                                                                </a>
-                                                            </div>
-                                                            <div className="vd-infor">
-                                                                <h6>
-                                                                    {" "}
-                                                                    <a href="#">Interview: Scarlett Johansson</a>
-                                                                </h6>
-                                                                <p className="time"> 3:27</p>
-                                                            </div>
-                                                        </div>
-                                                        <div className="vd-item">
-                                                            <div className="vd-it">
-                                                                <img
-                                                                    className="vd-img"
-                                                                    src="images/uploads/vd-item1.jpg"
-                                                                    alt=""
-                                                                />
-                                                                <a
-                                                                    className="fancybox-media hvr-grow"
-                                                                    href="https://www.youtube.com/embed/o-0hcF97wy0"
-                                                                    rel="playlist"
-                                                                >
-                                                                    <img src="../images/uploads/play-vd.png" alt="" />
-                                                                </a>
-                                                            </div>
-                                                            <div className="vd-infor">
-                                                                <h6>
-                                                                    {" "}
-                                                                    <a href="#">
-                                                                        Featurette: Meet Quicksilver &amp; The Scarlet
-                                                                        Witch
-                                                                    </a>
-                                                                </h6>
-                                                                <p className="time"> 1: 31</p>
-                                                            </div>
-                                                        </div>
-                                                        <div className="vd-item">
-                                                            <div className="vd-it">
-                                                                <img
-                                                                    className="vd-img"
-                                                                    src="images/uploads/vd-item2.jpg"
-                                                                    alt=""
-                                                                />
-                                                                <a
-                                                                    className="fancybox-media hvr-grow"
-                                                                    href="https://www.youtube.com/embed/o-0hcF97wy0"
-                                                                    rel="playlist"
-                                                                >
-                                                                    <img src="../images/uploads/play-vd.png" alt="" />
-                                                                </a>
-                                                            </div>
-                                                            <div className="vd-infor">
-                                                                <h6>
-                                                                    {" "}
-                                                                    <a href="#">Interview: Director Joss Whedon</a>
-                                                                </h6>
-                                                                <p className="time"> 1: 03</p>
-                                                            </div>
-                                                        </div>
-                                                        <div className="vd-item">
-                                                            <div className="vd-it">
-                                                                <img
-                                                                    className="vd-img"
-                                                                    src="images/uploads/vd-item3.jpg"
-                                                                    alt=""
-                                                                />
-                                                                <a
-                                                                    className="fancybox-media hvr-grow"
-                                                                    href="https://www.youtube.com/embed/o-0hcF97wy0"
-                                                                    rel="playlist"
-                                                                >
-                                                                    <img src="../images/uploads/play-vd.png" alt="" />
-                                                                </a>
-                                                            </div>
-                                                            <div className="vd-infor">
-                                                                <h6>
-                                                                    {" "}
-                                                                    <a href="#">Interview: Mark Ruffalo</a>
-                                                                </h6>
-                                                                <p className="time"> 3:27</p>
-                                                            </div>
-                                                        </div>
-                                                        <div className="vd-item">
-                                                            <div className="vd-it">
-                                                                <img
-                                                                    className="vd-img"
-                                                                    src="images/uploads/vd-item4.jpg"
-                                                                    alt=""
-                                                                />
-                                                                <a
-                                                                    className="fancybox-media hvr-grow"
-                                                                    href="https://www.youtube.com/embed/o-0hcF97wy0"
-                                                                    rel="playlist"
-                                                                >
-                                                                    <img src="../images/uploads/play-vd.png" alt="" />
-                                                                </a>
-                                                            </div>
-                                                            <div className="vd-infor">
-                                                                <h6>
-                                                                    {" "}
-                                                                    <a href="#">Official Trailer #2</a>
-                                                                </h6>
-                                                                <p className="time"> 3:27</p>
-                                                            </div>
-                                                        </div>
+                                                    <div className="row">
+                                                        {
+
+                                                            movieData?.videos?.results.filter((item)=> item.type !== 'Featurette').slice(0,15)
+                                                            ?.map((item, key) => (
+
+                                                                <>
+                                                                    <div className="col-sm-4">
+                                                                        <div className="vd-item">
+                                                                            <a className="youtube_outlink" target="_blank" href={`https://www.youtube.com/watch/${item?.key}}`}>
+                                                                                <div className="video-box">
+                                                                                    <iframe
+                                                                                        className="fancybox-media hvr-grow"
+                                                                                        src={`https://www.youtube.com/embed/${item?.key}`}
+                                                                                        rel="playlist"
+                                                                                    >
+                                                                                    </iframe>
+                                                                                </div>
+                                                                                <div className="vd-infor">
+                                                                                    <h6>
+                                                                                        {" "}
+                                                                                        <a>{item?.type}</a>
+                                                                                    </h6>
+                                                                                </div>
+                                                                            </a>
+
+                                                                        </div>
+                                                                    </div>
+                                                                </>
+                                                            ))
+
+                                                        }
+
                                                     </div>
                                                     <div className="title-hd-sm">
                                                         <h4>
-                                                            Photos <span> (21)</span>
+                                                            Photos <span> ({movieData?.images?.posters.slice(0, 19).length})</span>
                                                         </h4>
                                                     </div>
-                                                    <div className="mvsingle-item">
-                                                        <a
-                                                            className="img-lightbox"
-                                                            data-fancybox-group="gallery"
-                                                            href="images/uploads/image11.jpg"
-                                                        >
-                                                            <img src="../images/uploads/image1.jpg" alt="" />
-                                                        </a>
-                                                        <a
-                                                            className="img-lightbox"
-                                                            data-fancybox-group="gallery"
-                                                            href="images/uploads/image21.jpg"
-                                                        >
-                                                            <img src="../images/uploads/image2.jpg" alt="" />
-                                                        </a>
-                                                        <a
-                                                            className="img-lightbox"
-                                                            data-fancybox-group="gallery"
-                                                            href="images/uploads/image31.jpg"
-                                                        >
-                                                            <img src="../images/uploads/image3.jpg" alt="" />
-                                                        </a>
-                                                        <a
-                                                            className="img-lightbox"
-                                                            data-fancybox-group="gallery"
-                                                            href="images/uploads/image41.jpg"
-                                                        >
-                                                            <img src="../images/uploads/image4.jpg" alt="" />
-                                                        </a>
-                                                        <a
-                                                            className="img-lightbox"
-                                                            data-fancybox-group="gallery"
-                                                            href="images/uploads/image51.jpg"
-                                                        >
-                                                            <img src="../images/uploads/image5.jpg" alt="" />
-                                                        </a>
-                                                        <a
-                                                            className="img-lightbox"
-                                                            data-fancybox-group="gallery"
-                                                            href="images/uploads/image61.jpg"
-                                                        >
-                                                            <img src="../images/uploads/image6.jpg" alt="" />
-                                                        </a>
-                                                        <a
-                                                            className="img-lightbox"
-                                                            data-fancybox-group="gallery"
-                                                            href="images/uploads/image71.jpg"
-                                                        >
-                                                            <img src="../images/uploads/image7.jpg" alt="" />
-                                                        </a>
-                                                        <a
-                                                            className="img-lightbox"
-                                                            data-fancybox-group="gallery"
-                                                            href="images/uploads/image81.jpg"
-                                                        >
-                                                            <img src="../images/uploads/image8.jpg" alt="" />
-                                                        </a>
-                                                        <a
-                                                            className="img-lightbox"
-                                                            data-fancybox-group="gallery"
-                                                            href="images/uploads/image91.jpg"
-                                                        >
-                                                            <img src="../images/uploads/image9.jpg" alt="" />
-                                                        </a>
-                                                        <a
-                                                            className="img-lightbox"
-                                                            data-fancybox-group="gallery"
-                                                            href="images/uploads/image101.jpg"
-                                                        >
-                                                            <img src="../images/uploads/image10.jpg" alt="" />
-                                                        </a>
-                                                        <a
-                                                            className="img-lightbox"
-                                                            data-fancybox-group="gallery"
-                                                            href="images/uploads/image111.jpg"
-                                                        >
-                                                            <img src="../images/uploads/image1-1.jpg" alt="" />
-                                                        </a>
-                                                        <a
-                                                            className="img-lightbox"
-                                                            data-fancybox-group="gallery"
-                                                            href="images/uploads/image121.jpg"
-                                                        >
-                                                            <img src="../images/uploads/image12.jpg" alt="" />
-                                                        </a>
-                                                        <a
-                                                            className="img-lightbox"
-                                                            data-fancybox-group="gallery"
-                                                            href="images/uploads/image131.jpg"
-                                                        >
-                                                            <img src="../images/uploads/image13.jpg" alt="" />
-                                                        </a>
-                                                        <a
-                                                            className="img-lightbox"
-                                                            data-fancybox-group="gallery"
-                                                            href="images/uploads/image141.jpg"
-                                                        >
-                                                            <img src="../images/uploads/image14.jpg" alt="" />
-                                                        </a>
-                                                        <a
-                                                            className="img-lightbox"
-                                                            data-fancybox-group="gallery"
-                                                            href="images/uploads/image151.jpg"
-                                                        >
-                                                            <img src="../images/uploads/image15.jpg" alt="" />
-                                                        </a>
-                                                        <a
-                                                            className="img-lightbox"
-                                                            data-fancybox-group="gallery"
-                                                            href="images/uploads/image161.jpg"
-                                                        >
-                                                            <img src="../images/uploads/image16.jpg" alt="" />
-                                                        </a>
-                                                        <a
-                                                            className="img-lightbox"
-                                                            data-fancybox-group="gallery"
-                                                            href="images/uploads/image171.jpg"
-                                                        >
-                                                            <img src="../images/uploads/image17.jpg" alt="" />
-                                                        </a>
-                                                        <a
-                                                            className="img-lightbox"
-                                                            data-fancybox-group="gallery"
-                                                            href="images/uploads/image181.jpg"
-                                                        >
-                                                            <img src="../images/uploads/image18.jpg" alt="" />
-                                                        </a>
-                                                        <a
-                                                            className="img-lightbox"
-                                                            data-fancybox-group="gallery"
-                                                            href="images/uploads/image191.jpg"
-                                                        >
-                                                            <img src="../images/uploads/image19.jpg" alt="" />
-                                                        </a>
-                                                        <a
-                                                            className="img-lightbox"
-                                                            data-fancybox-group="gallery"
-                                                            href="images/uploads/image201.jpg"
-                                                        >
-                                                            <img src="../images/uploads/image20.jpg" alt="" />
-                                                        </a>
-                                                        <a
-                                                            className="img-lightbox"
-                                                            data-fancybox-group="gallery"
-                                                            href="images/uploads/image211.jpg"
-                                                        >
-                                                            <img src="../images/uploads/image2-1.jpg" alt="" />
-                                                        </a>
+                                                    <div className="mvsingle-item ">
+
+                                                        <div className="row">
+                                                            {
+
+                                                                movieData?.images?.posters.slice(0, 15).map((item, key) => (
+
+                                                                    <>
+                                                                        <div className="col-sm-2">
+                                                                            <a
+                                                                                className="img-lightbox"
+                                                                            >
+                                                                                <img src={`https://image.tmdb.org/t/p/w200/${item?.file_path}`} alt="" />
+                                                                            </a>
+                                                                        </div>
+                                                                    </>
+
+                                                                ))
+
+                                                            }
+                                                        </div>
+
+
+
                                                     </div>
                                                 </div>
                                             </div>
