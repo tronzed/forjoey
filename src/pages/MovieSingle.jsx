@@ -866,8 +866,7 @@ export default function MovieSingle() {
                                                                                     </div>
                                                                                     <div className="vd-infor">
                                                                                         <h6>
-                                                                                            {" "}
-                                                                                            <a>{item?.type}</a>
+                                                                                            {item?.type}
                                                                                         </h6>
                                                                                     </div>
                                                                                 </a>
