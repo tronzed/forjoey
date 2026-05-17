@@ -13,6 +13,9 @@ export default function MovieSingle() {
 
     const [writer, setWriter] = useState();
     const [director, setDirector] = useState();
+    const [loadMoreImg, setLoadMoreImg] = useState(15);
+    const [loadMoreVid, setLoadMoreVid] = useState(15);
+
 
 
     const getData = async (id) => {
@@ -221,50 +224,8 @@ export default function MovieSingle() {
                                                         <p>
                                                             {movieData?.overview}
                                                         </p>
-                                                        <div className="title-hd-sm">
-                                                            <h4>Videos &amp; Photos</h4>
-                                                            <a href="#" className="time">
-                                                                All 5 Videos &amp; 245 Photos{" "}
-                                                                <i className="ion-ios-arrow-right" />
-                                                            </a>
-                                                        </div>
-                                                        <div className="mvsingle-item ov-item">
-                                                            <a
-                                                                className="img-lightbox"
-                                                                data-fancybox-group="gallery"
-                                                                href="images/uploads/image11.jpg"
-                                                            >
-                                                                <img src="../images/uploads/image1.jpg" alt="" />
-                                                            </a>
-                                                            <a
-                                                                className="img-lightbox"
-                                                                data-fancybox-group="gallery"
-                                                                href="images/uploads/image21.jpg"
-                                                            >
-                                                                <img src="../images/uploads/image2.jpg" alt="" />
-                                                            </a>
-                                                            <a
-                                                                className="img-lightbox"
-                                                                data-fancybox-group="gallery"
-                                                                href="images/uploads/image31.jpg"
-                                                            >
-                                                                <img src="../images/uploads/image3.jpg" alt="" />
-                                                            </a>
-                                                            <div className="vd-it">
-                                                                <img
-                                                                    className="vd-img"
-                                                                    src="images/uploads/image4.jpg"
-                                                                    alt=""
-                                                                />
-                                                                <a
-                                                                    className="fancybox-media hvr-grow"
-                                                                    href="https://www.youtube.com/embed/o-0hcF97wy0"
-                                                                    rel="playlist"
-                                                                >
-                                                                    <img src="../images/uploads/play-vd.png" alt="" />
-                                                                </a>
-                                                            </div>
-                                                        </div>
+
+
                                                         <div className="title-hd-sm">
                                                             <h4>cast</h4>
                                                             <a href="#" className="time">
@@ -281,14 +242,13 @@ export default function MovieSingle() {
                                                                         <div className="cast-it">
                                                                             <div className="cast-left">
                                                                                 <img src={`https://image.tmdb.org/t/p/w200/${item?.profile_path}`} alt="" />
-                                                                                <a href="#">{item?.original_name}.</a>
+                                                                                <Link to="/">{item?.original_name}.</Link>
                                                                             </div>
                                                                             <p>{item?.character}</p>
                                                                         </div>
                                                                     </>
                                                                 ))
                                                             }
-
 
                                                         </div>
                                                         <div className="title-hd-sm">
@@ -889,37 +849,41 @@ export default function MovieSingle() {
                                                     <div className="row">
                                                         {
 
-                                                            movieData?.videos?.results.filter((item)=> item.type !== 'Featurette').slice(0,15)
-                                                            ?.map((item, key) => (
+                                                            movieData?.videos?.results.filter((item) => item.type !== 'Featurette').slice(0, loadMoreVid)
+                                                                ?.map((item, key) => (
 
-                                                                <>
-                                                                    <div className="col-sm-4">
-                                                                        <div className="vd-item">
-                                                                            <a className="youtube_outlink" target="_blank" href={`https://www.youtube.com/watch/${item?.key}}`}>
-                                                                                <div className="video-box">
-                                                                                    <iframe
-                                                                                        className="fancybox-media hvr-grow"
-                                                                                        src={`https://www.youtube.com/embed/${item?.key}`}
-                                                                                        rel="playlist"
-                                                                                    >
-                                                                                    </iframe>
-                                                                                </div>
-                                                                                <div className="vd-infor">
-                                                                                    <h6>
-                                                                                        {" "}
-                                                                                        <a>{item?.type}</a>
-                                                                                    </h6>
-                                                                                </div>
-                                                                            </a>
+                                                                    <>
+                                                                        <div className="col-sm-4">
+                                                                            <div className="vd-item">
+                                                                                <a className="youtube_outlink" target="_blank" href={`https://www.youtube.com/watch/${item?.key}}`}>
+                                                                                    <div className="video-box">
+                                                                                        <iframe
+                                                                                            className="fancybox-media hvr-grow"
+                                                                                            src={`https://www.youtube.com/embed/${item?.key}`}
+                                                                                            rel="playlist"
+                                                                                        >
+                                                                                        </iframe>
+                                                                                    </div>
+                                                                                    <div className="vd-infor">
+                                                                                        <h6>
+                                                                                            {" "}
+                                                                                            <a>{item?.type}</a>
+                                                                                        </h6>
+                                                                                    </div>
+                                                                                </a>
 
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
-                                                                </>
-                                                            ))
+                                                                    </>
+                                                                ))
 
                                                         }
 
                                                     </div>
+                                                    <div className="loadmore_box">
+                                                        <button className="redbtn" onClick={() => { setLoadMoreVid(loadMoreVid + 15) }}>Load More</button>
+                                                    </div>
+
                                                     <div className="title-hd-sm">
                                                         <h4>
                                                             Photos <span> ({movieData?.images?.posters.slice(0, 19).length})</span>
@@ -930,7 +894,7 @@ export default function MovieSingle() {
                                                         <div className="row">
                                                             {
 
-                                                                movieData?.images?.posters.slice(0, 15).map((item, key) => (
+                                                                movieData?.images?.posters.slice(0, loadMoreImg).map((item, key) => (
 
                                                                     <>
                                                                         <div className="col-sm-2">
@@ -948,7 +912,9 @@ export default function MovieSingle() {
                                                         </div>
 
 
-
+                                                    </div>
+                                                    <div className="loadmore_box">
+                                                        <button className="redbtn" onClick={() => { setLoadMoreImg(loadMoreImg + 10) }}>Load More</button>
                                                     </div>
                                                 </div>
                                             </div>

@@ -5,10 +5,10 @@ import logo from '../assets/logo1.png'
 
 export default function Header() {
 
-    const [movieListData, setMovieListData] = useState();
-    const [bannerData, setBannerData] = useState();
     const loc = useLocation();
 
+    const [movieListData, setMovieListData] = useState();
+    const [bannerData, setBannerData] = useState();
     const [mobToggle, setMobToggle] = useState(false);
 
     const getMovie = async () => {
