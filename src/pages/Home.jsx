@@ -66,9 +66,7 @@ const Home = () => {
                                                                         <img src={`https://image.tmdb.org/t/p/w500${item?.poster_path}`} alt="" />
                                                                     </div>
                                                                     <div className="title-in">
-                                                                        <h6>
-                                                                            <a href="#">{item?.original_title}</a>
-                                                                        </h6>
+                                                                        <h6>{item?.original_title}</h6>
                                                                         <p>
                                                                             <i className="ion-android-star" />
                                                                             <span>7.4</span> /10

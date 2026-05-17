@@ -22,7 +22,6 @@ export default function MovieList() {
 
         <>
 
-            {console.log(movieListData, 'dddd')}
 
             <Header />
 

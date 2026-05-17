@@ -33,10 +33,6 @@ export default function Header() {
     return (
 
         <>
-            {
-                console.log(bannerData, 'bannerData')
-
-            }
 
             {/* BEGIN | Header */}
             <header className="ht-header full-width-hd">
