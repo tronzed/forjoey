@@ -4,7 +4,7 @@ import './App.css'
 import Home from './pages/Home'
 import TvList from './pages/TvList'
 import MovieList from './pages/MovieList'
-import NoPage from './pages/noPage'
+import NoPage from './pages/NoPage'
 import Celebs from './pages/Celebs'
 import MovieSingle from './pages/MovieSingle'
 
