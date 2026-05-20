@@ -1,0 +1,13 @@
+
+--- Functionality 
+
+- Loader
+- gallery for photos
+
+
+--- Pages
+
+- Celebrities list
+- Celebrities single
+- TV List 
+- TV Single

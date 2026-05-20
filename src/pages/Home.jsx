@@ -4,6 +4,7 @@ import Footer from '../components/Footer'
 import { useEffect, useState } from 'react'
 import { getMovie, getTv } from '../utils/function'
 import { Link } from 'react-router-dom'
+import Loader from '../components/Loader'
 
 const Home = () => {
 
@@ -12,12 +13,15 @@ const Home = () => {
     const [tvListData, setTvListData] = useState();
     const [bannerData, setBannerData] = useState();
 
+    const [loader, setLoader] = useState(true);
+
     const getMovieData = async () => {
         const res = await getMovie();
         setMovieListData(res);
 
         const randomNumber = Math.floor(Math.random() * 19) + 1;
         setBannerData(res[randomNumber]);
+        setLoader(false);
     }
 
     const getTvData = async () => {
@@ -37,6 +41,8 @@ const Home = () => {
 
 
             <Header />
+
+            <Loader status={loader} />
 
             <div className="movie-items  full-width">
                 <div className="row">
