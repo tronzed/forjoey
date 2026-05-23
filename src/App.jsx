@@ -6,6 +6,7 @@ import TvList from './pages/TvList'
 import MovieList from './pages/MovieList'
 import NoPage from './pages/NoPage'
 import Celebs from './pages/Celebs'
+import CelebsSingle from './pages/CelebsSingle'
 import MovieSingle from './pages/MovieSingle'
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
           <Route path='/movSingle/:id' element={<MovieSingle />} />
           <Route path='/tv' element={<TvList />} />
           <Route path='/celebs' element={<Celebs />} />
+          <Route path='/celebsingle/:id' element={<CelebsSingle />} />
           <Route path='*' element={<NoPage />} />
 
         </Routes>

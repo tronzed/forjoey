@@ -227,7 +227,7 @@ export default function Header() {
                     </div>
                 </div>
 
-            ) : loc.pathname.split('/')[1] === 'movSingle' ? (
+            ) : loc.pathname.split('/')[1] === 'movSingle' || loc.pathname.split('/')[1] === 'celebsingle' ? (
 
                 <>
 

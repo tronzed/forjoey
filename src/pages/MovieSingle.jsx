@@ -113,7 +113,7 @@ export default function MovieSingle() {
                             <div className="movie-img sticky-sb">
                                 <img src={`https://image.tmdb.org/t/p/w500/${movieData?.poster_path}`} alt="" />
                                 <div className="movie-btn">
-                                    <div className="btn-transform transform-vertical red hide_me">
+                                    <div className="btn-transform transform-vertical red ">
                                         <div>
                                             <a href="#" className="item item-1 redbtn">
                                                 {" "}
@@ -121,7 +121,7 @@ export default function MovieSingle() {
                                             </a>
                                         </div>
                                         <div>
-                                            <a
+                                            <a target="_blank"
                                                 href="https://www.youtube.com/embed/o-0hcF97wy0"
                                                 className="item item-2 redbtn fancybox-media hvr-grow"
                                                 rel="playlist"
@@ -242,7 +242,7 @@ export default function MovieSingle() {
                                                                         <div className="cast-it">
                                                                             <div className="cast-left">
                                                                                 <img src={`https://image.tmdb.org/t/p/w200/${item?.profile_path}`} alt="" />
-                                                                                <Link to="/">{item?.original_name}.</Link>
+                                                                                <Link to={`/celebsingle/${item?.id}`}>{item?.original_name}.</Link>
                                                                             </div>
                                                                             <p>{item?.character}</p>
                                                                         </div>

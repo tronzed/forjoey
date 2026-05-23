@@ -87,3 +87,10 @@
     align-items: center;
     justify-content: center;
 }
+.movie-items .movie-item img {
+    object-fit: cover;
+    height: 350px;
+}
+.movie-item .title-in h6 {
+    color: #fff;
+}
