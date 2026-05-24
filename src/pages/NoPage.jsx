@@ -4,31 +4,26 @@ import Footer from "../components/Footer";
 export default function NoPage() {
 
 
-
-
-    const arr = [4, 3, 2, 9];
+    const arr = [1, 2, 3];
 
     var plusOne = function (digits) {
 
-        const last = digits.pop() + 1;
+        const asOne = BigInt(digits.join('')) + 1n;
 
-        let data = []
+        const asSplit = asOne.toString().split("");
 
-        if (last >= 10) {
+        const result = []
 
-            data = last.toString().split('');
-
+        for (let i = 0; i < asSplit.length; i++) {
+            result.push(Number(asSplit[i]));
         }
 
-
-        const dddd = digits.concat(data);
-
-        console.log(dddd);
-
+        return result;
     };
 
 
     plusOne(arr);
+    // console.log(plusOne(arr));
 
 
 
