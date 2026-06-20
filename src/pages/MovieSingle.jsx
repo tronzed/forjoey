@@ -304,7 +304,7 @@ export default function MovieSingle() {
                                                             <p>
                                                                 {director?.map((item, key) => (
                                                                     <>
-                                                                        <a href="#">{item?.name}, </a>
+                                                                        <Link to={'/celebsingle/'+item?.id}>{item?.name} </Link>
                                                                     </>
                                                                 ))}
                                                             </p>

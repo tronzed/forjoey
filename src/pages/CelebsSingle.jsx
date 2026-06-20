@@ -109,10 +109,6 @@ export default function CelebsSingle() {
 
                                                         <div className="title-hd-sm">
                                                             <h4>filmography</h4>
-                                                            <a href="#" className="time">
-                                                                Full Filmography
-                                                                <i className="ion-ios-arrow-right" />
-                                                            </a>
                                                         </div>
                                                         {/* movie cast */}
 
@@ -141,7 +137,7 @@ export default function CelebsSingle() {
                                                         <div className="sb-it">
                                                             <h6>Fullname:</h6>
                                                             <p>
-                                                                <a href="#">{celebData?.name}</a>
+                                                                {celebData?.name}
                                                             </p>
                                                         </div>
                                                         <div className="sb-it">
@@ -191,7 +187,7 @@ export default function CelebsSingle() {
 
                                                         {
 
-                                                            celebData?.combined_credits?.cast.slice(0, 15).map(function (item, index, array) {
+                                                            celebData?.combined_credits?.cast?.map(function (item, index, array) {
                                                                 return (
                                                                     <>
                                                                         <div className="cast-it">
