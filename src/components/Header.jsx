@@ -160,7 +160,7 @@ export default function Header() {
                                                 </div>
                                                 <h1>
                                                     <a href="#">{bannerData?.title}
-                                                        galaxy <span>2015</span>
+                                                        <span>2015</span>
                                                     </a>
                                                 </h1>
                                                 <div className="social-btn">
