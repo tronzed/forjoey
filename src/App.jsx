@@ -8,6 +8,7 @@ import NoPage from './pages/NoPage'
 import Celebs from './pages/Celebs'
 import CelebsSingle from './pages/CelebsSingle'
 import MovieSingle from './pages/MovieSingle'
+import SearchList from './pages/SearchList'
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
           <Route path='/tv' element={<TvList />} />
           <Route path='/celebs' element={<Celebs />} />
           <Route path='/celebsingle/:id' element={<CelebsSingle />} />
+          <Route path='/search-list/' element={<SearchList />} />
           <Route path='*' element={<NoPage />} />
 
         </Routes>
