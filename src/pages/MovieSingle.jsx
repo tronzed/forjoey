@@ -178,24 +178,27 @@ export default function MovieSingle() {
                                 </div>
                                 <div className="movie-rate">
                                     <div className="rate">
-                                        <i className="ion-android-star" />
                                         <p>
-                                            <span>{movieData?.vote_average}</span> /10
-                                            <br />
-                                            <span className="rv">56 Reviews</span>
+                                            <span>{Math.round(movieData?.vote_average)}</span> /10
                                         </p>
                                     </div>
                                     <div className="rate-star">
-                                        <p>Rate This Movie:</p>
-                                        <i className="ion-ios-star" />
-                                        <i className="ion-ios-star" />
-                                        <i className="ion-ios-star" />
-                                        <i className="ion-ios-star" />
-                                        <i className="ion-ios-star" />
-                                        <i className="ion-ios-star" />
-                                        <i className="ion-ios-star" />
-                                        <i className="ion-ios-star" />
-                                        <i className="ion-ios-star-outline" />
+
+                                        {
+
+                                            Array.from({ length: 10 }, (_, index) => (
+
+                                                <>
+                                                    {index + 1 <= Math.round(movieData?.vote_average) ? <i className="ion-ios-star" /> : <i className="ion-ios-star-outline" />}
+
+                                                </>
+
+                                            ))
+
+                                        }
+
+
+
                                     </div>
                                 </div>
                                 <div className="movie-tabs">
@@ -204,18 +207,18 @@ export default function MovieSingle() {
                                             <li className={overviewTab ? "active" : ""} onClick={() => { tabHandle('overview') }}>
                                                 <a>Overview</a>
                                             </li>
-                                            <li className={reviewsTab ? "active" : ""} onClick={() => { tabHandle('reviews') }}>
+                                            {/* <li className={reviewsTab ? "active" : ""} onClick={() => { tabHandle('reviews') }}>
                                                 <a> Reviews</a>
-                                            </li>
+                                            </li> */}
                                             <li className={castTab ? "active" : ""} onClick={() => { tabHandle('cast') }}>
                                                 <a> Cast &amp; Crew </a>
                                             </li>
                                             <li className={mediaTab ? "active" : ""} onClick={() => { tabHandle('media') }}>
                                                 <a> Media</a>
                                             </li>
-                                            <li className={relatedTab ? "active" : ""} onClick={() => { tabHandle('related') }}>
+                                            {/* <li className={relatedTab ? "active" : ""} onClick={() => { tabHandle('related') }}>
                                                 <a> Related Movies</a>
-                                            </li>
+                                            </li> */}
                                         </ul>
                                         <div className="tab-content">
                                             <div id="overview" style={{ display: overviewTab ? "block" : "none" }} onClick={() => { tabHandle('overview') }}>
@@ -304,7 +307,7 @@ export default function MovieSingle() {
                                                             <p>
                                                                 {director?.map((item, key) => (
                                                                     <>
-                                                                        <Link to={'/celebsingle/'+item?.id}>{item?.name} </Link>
+                                                                        <Link to={'/celebsingle/' + item?.id}>{item?.name} </Link>
                                                                     </>
                                                                 ))}
                                                             </p>
@@ -314,7 +317,7 @@ export default function MovieSingle() {
                                                             <p>
                                                                 {writer?.map((item, key) => (
                                                                     <>
-                                                                        <a href="#">{item?.name}, </a>
+                                                                        <Link to={"/celebsingle/" + item?.id}>{item?.name}, </Link>
                                                                     </>
                                                                 ))}
                                                             </p>
@@ -327,7 +330,7 @@ export default function MovieSingle() {
 
                                                                     movieData?.genres?.map((item, key) => (
                                                                         <>
-                                                                            <a href="#">{item?.name}, </a>
+                                                                            <span>{item?.name}, </span>
                                                                         </>
                                                                     ))
 
@@ -645,7 +648,7 @@ export default function MovieSingle() {
                                             <div id="cast" style={{ display: castTab ? "block" : "none" }} className='tab' onClick={() => { tabHandle('cast') }}>
                                                 <div className="row">
                                                     <h3>Cast &amp; Crew of</h3>
-                                                    <h2>Avengers: Age of Ultron</h2>
+                                                    <h2>{movieData?.original_title}</h2>
                                                     {/* //== */}
                                                     <div className="title-hd-sm">
                                                         <h4>Directors &amp; Credit Writers</h4>
@@ -653,14 +656,17 @@ export default function MovieSingle() {
                                                     <div className="mvcast-item">
                                                         <div className="cast-it">
                                                             <div className="cast-left">
-                                                                <h4>JW</h4>
-                                                                <a href="#">Joss Whedon</a>
+                                                                {director?.map((item, key) => (
+                                                                    <>
+                                                                        <Link to={'/celebsingle/' + item?.id}>{item?.name} </Link>
+                                                                    </>
+                                                                ))}
+
                                                             </div>
-                                                            <p>... Director</p>
                                                         </div>
                                                     </div>
                                                     {/* //== */}
-                                                    <div className="title-hd-sm">
+                                                    {/* <div className="title-hd-sm">
                                                         <h4>Directors &amp; Credit Writers</h4>
                                                     </div>
                                                     <div className="mvcast-item">
@@ -706,71 +712,31 @@ export default function MovieSingle() {
                                                             </div>
                                                             <p>... (character created by: Ultron, Vision)</p>
                                                         </div>
-                                                    </div>
+                                                    </div> */}
                                                     {/* //== */}
                                                     <div className="title-hd-sm">
                                                         <h4>Cast</h4>
                                                     </div>
                                                     <div className="mvcast-item">
-                                                        <div className="cast-it">
-                                                            <div className="cast-left">
-                                                                <img src="../images/uploads/cast1.jpg" alt="" />
-                                                                <a href="#">Robert Downey Jr.</a>
-                                                            </div>
-                                                            <p>... Robert Downey Jr.</p>
-                                                        </div>
-                                                        <div className="cast-it">
-                                                            <div className="cast-left">
-                                                                <img src="../images/uploads/cast2.jpg" alt="" />
-                                                                <a href="#">Chris Hemsworth</a>
-                                                            </div>
-                                                            <p>... Thor</p>
-                                                        </div>
-                                                        <div className="cast-it">
-                                                            <div className="cast-left">
-                                                                <img src="../images/uploads/cast3.jpg" alt="" />
-                                                                <a href="#">Mark Ruffalo</a>
-                                                            </div>
-                                                            <p>... Bruce Banner/ Hulk</p>
-                                                        </div>
-                                                        <div className="cast-it">
-                                                            <div className="cast-left">
-                                                                <img src="../images/uploads/cast4.jpg" alt="" />
-                                                                <a href="#">Chris Evans</a>
-                                                            </div>
-                                                            <p>... Steve Rogers/ Captain America</p>
-                                                        </div>
-                                                        <div className="cast-it">
-                                                            <div className="cast-left">
-                                                                <img src="../images/uploads/cast5.jpg" alt="" />
-                                                                <a href="#">Scarlett Johansson</a>
-                                                            </div>
-                                                            <p>... Natasha Romanoff/ Black Widow</p>
-                                                        </div>
-                                                        <div className="cast-it">
-                                                            <div className="cast-left">
-                                                                <img src="../images/uploads/cast6.jpg" alt="" />
-                                                                <a href="#">Jeremy Renner</a>
-                                                            </div>
-                                                            <p>... Clint Barton/ Hawkeye</p>
-                                                        </div>
-                                                        <div className="cast-it">
-                                                            <div className="cast-left">
-                                                                <img src="../images/uploads/cast7.jpg" alt="" />
-                                                                <a href="#">James Spader</a>
-                                                            </div>
-                                                            <p>... Ultron</p>
-                                                        </div>
-                                                        <div className="cast-it">
-                                                            <div className="cast-left">
-                                                                <img src="../images/uploads/cast9.jpg" alt="" />
-                                                                <a href="#">Don Cheadle</a>
-                                                            </div>
-                                                            <p>... James Rhodes/ War Machine</p>
-                                                        </div>
+
+                                                        {
+                                                            movieData?.credits?.cast.map((item, key) => (
+                                                                <>
+                                                                    <div className="cast-it">
+                                                                        <div className="cast-left">
+                                                                            <img src={`https://image.tmdb.org/t/p/w200/${item?.profile_path}`} alt="" />
+                                                                            <Link to={`/celebsingle/${item?.id}`}>{item?.original_name}.</Link>
+                                                                        </div>
+                                                                        <p>{item?.character}</p>
+                                                                    </div>
+                                                                </>
+                                                            ))
+                                                        }
+
+
                                                     </div>
                                                     {/* //== */}
-                                                    <div className="title-hd-sm">
+                                                    {/* <div className="title-hd-sm">
                                                         <h4>Produced by</h4>
                                                     </div>
                                                     <div className="mvcast-item">
@@ -830,7 +796,7 @@ export default function MovieSingle() {
                                                             </div>
                                                             <p>... associate producer</p>
                                                         </div>
-                                                    </div>
+                                                    </div> */}
                                                 </div>
                                             </div>
                                             <div id="media" style={{ display: mediaTab ? "block" : "none" }} className='tab' onClick={() => { tabHandle('media') }}>

@@ -106,7 +106,7 @@ export default function Header() {
                                         celebrities{" "}
                                     </Link>
                                 </li>
-                                <li className="dropdown first">
+                                {/* <li className="dropdown first">
                                     <Link
                                         to='/tv'
                                         className="btn btn-default dropdown-toggle lv1"
@@ -115,10 +115,19 @@ export default function Header() {
                                     >
                                         TV
                                     </Link>
-                                </li>
+                                </li> */}
 
                             </ul>
                             <ul className="nav navbar-nav flex-child-menu menu-right">
+                                <li>
+                                    <div className="top-search">
+                                        <select className="hide_me">
+                                            <option value="united">TV show</option>
+                                            <option value="saab">Others</option>
+                                        </select>
+                                        <input type="text" placeholder="Search movies, shows, or celebrities" />
+                                    </div>
+                                </li>
                                 <li className="loginLink">
                                     <Link to="#">LOG In</Link>
                                 </li>
@@ -130,6 +139,8 @@ export default function Header() {
                         {/* /.navbar-collapse */}
                     </nav>
                     {/* search form */}
+
+
                 </div>
             </header>
             {/* END | Header */}
@@ -144,7 +155,7 @@ export default function Header() {
 
                             <div className="slider-single-item">
                                 <div className="movie-item">
-                                    <div className="row">
+                                    <div className="row mid_row">
                                         <div className="col-md-8 col-sm-12 col-xs-12">
                                             <div className="title-in">
                                                 <div className="cate hide_me">
@@ -194,7 +205,7 @@ export default function Header() {
                                                 <div className="mv-details">
                                                     <p>
                                                         <i className="ion-android-star" />
-                                                        <span>{bannerData?.vote_average}</span> /10
+                                                        <span>{Math.round(bannerData?.vote_average)}</span> /10
                                                     </p>
                                                     <ul className="mv-infor">
                                                         <li> Run Time: 2h21’ </li>

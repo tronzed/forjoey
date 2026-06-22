@@ -122,7 +122,7 @@ export default function CelebsSingle() {
                                                                                     <img src={`https://image.tmdb.org/t/p/w500/${item?.poster_path}`} alt="" />
                                                                                     <div>
                                                                                         <Link to={`/movSingle/${item?.id}`}>{item?.title}</Link>
-                                                                                        <p className="time">{item?.character}</p>
+                                                                                        <p className="time">{item?.character || "N/A"}</p>
                                                                                     </div>
                                                                                 </div>
                                                                                 <p>... {item?.release_date} </p>
@@ -195,7 +195,7 @@ export default function CelebsSingle() {
                                                                                 <img src={`https://image.tmdb.org/t/p/w500/${item?.poster_path}`} alt="" />
                                                                                 <div>
                                                                                     <Link to={`/movSingle/${item?.id}`}>{item?.title}</Link>
-                                                                                    <p className="time">{item?.character}</p>
+                                                                                    <p className="time">{ item?.character || "N/A"}</p>
                                                                                 </div>
                                                                             </div>
                                                                             <p>... {item?.release_date} </p>
@@ -205,8 +205,6 @@ export default function CelebsSingle() {
                                                             })
 
                                                         }
-
-
 
 
                                                     </div>

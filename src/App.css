@@ -94,3 +94,14 @@
 .movie-item .title-in h6 {
     color: #fff;
 }
+.ht-header .top-search {
+    width: 390px;
+    border-radius: 300px;
+}
+header .top-search input {
+    border-radius: 100px;
+}
+.mid_row {
+    display: flex;
+    align-items: center;
+}
