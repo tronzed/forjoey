@@ -1,6 +1,6 @@
 
-const apiKey = import.meta.env.VITE_TMDB_API_KEY;
 
+const apiKey = import.meta.env.VITE_TMDB_API_KEY;
 
 // get movie data 
 export const getMovie = async () => {
@@ -39,4 +39,16 @@ export const getSingleCelebs = async (id) => {
     const res = await fetch(`https://api.themoviedb.org/3/person/${id}?api_key=${apiKey}&append_to_response=combined_credits,images,external_ids`);
     const data = await res.json();
     return data;
+}
+
+
+export const search = async (name) => {
+
+
+    const res = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${name}`);
+
+    const data = await res.json();
+
+    return data;
+
 }

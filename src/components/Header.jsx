@@ -1,11 +1,15 @@
 import { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+
+import { search } from '../utils/function'
 
 import logo from '../assets/logo1.png'
 
 export default function Header() {
 
     const loc = useLocation();
+
+    const navigate = useNavigate();
 
     const [movieListData, setMovieListData] = useState();
     const [bannerData, setBannerData] = useState();
@@ -20,11 +24,16 @@ export default function Header() {
         setBannerData(data?.results[randomNumber]);
     }
 
-
     const menuToggleHandle = () => {
         setMobToggle(!mobToggle);
     }
 
+    const searchBox = async (item) => {
+
+        const data = await search(item);
+        navigate('/search-list/', { state: data.results });
+
+    }
 
     useEffect(() => {
         getMovie();
@@ -36,6 +45,7 @@ export default function Header() {
 
             {/* BEGIN | Header */}
             <header className="ht-header full-width-hd">
+
                 <div className="row">
                     <nav id="mainNav" className="navbar navbar-default navbar-custom">
                         {/* Brand and toggle get grouped for better mobile display */}
@@ -125,7 +135,14 @@ export default function Header() {
                                             <option value="united">TV show</option>
                                             <option value="saab">Others</option>
                                         </select>
-                                        <input type="text" placeholder="Search movies, shows, or celebrities" />
+                                        <input onKeyDown={
+                                            (e) => {
+
+                                                if (e.key === 'Enter') {
+                                                    searchBox(e.target.value)
+                                                }
+                                            }
+                                        } type="text" placeholder="Search movies, shows, or celebrities" />
                                     </div>
                                 </li>
                                 <li className="loginLink">

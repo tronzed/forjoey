@@ -105,3 +105,10 @@ header .top-search input {
     display: flex;
     align-items: center;
 }
+.movie-item-style-1 img {
+    margin-right: 0;
+    margin-bottom: 15px;
+    height: 350px;
+    width: 100%;
+    background-color: #FFE;
+}

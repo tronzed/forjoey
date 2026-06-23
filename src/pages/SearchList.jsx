@@ -2,14 +2,18 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { useEffect, useState } from 'react'
 import { getMovie, getTv } from '../utils/function'
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 export default function SearchList() {
 
+    const loc = useLocation();
+
     const [movieListData, setMovieListData] = useState();
 
-    const getMovieData = async () => {
-        const res = await getMovie();
+    
+
+    const getMovieData = () => {
+        const res = loc.state;
         setMovieListData(res);
     }
 
