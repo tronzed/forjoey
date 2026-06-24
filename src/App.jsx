@@ -9,6 +9,7 @@ import Celebs from './pages/Celebs'
 import CelebsSingle from './pages/CelebsSingle'
 import MovieSingle from './pages/MovieSingle'
 import SearchList from './pages/SearchList'
+import FindBox from './pages/FindBox'
 
 function App() {
 
@@ -16,7 +17,6 @@ function App() {
     <>
 
       <BrowserRouter>
-
         <Routes>
 
           <Route path='/' element={<Home />} />
@@ -26,10 +26,10 @@ function App() {
           <Route path='/celebs' element={<Celebs />} />
           <Route path='/celebsingle/:id' element={<CelebsSingle />} />
           <Route path='/search-list/' element={<SearchList />} />
+          <Route path='/find/' element={<FindBox />} />
           <Route path='*' element={<NoPage />} />
 
         </Routes>
-
       </BrowserRouter>
 
 

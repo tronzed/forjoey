@@ -68,47 +68,123 @@
     width: 100%;
     object-fit: cover;
 }
+
 .loadmore_box {
     text-align: center;
     margin-top: 11px;
 }
+
 .tab-content .redbtn {
     border: 0;
 }
+
 .loader_inner_box {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(250,250,250,0.95);
+    background-color: rgba(250, 250, 250, 0.95);
     z-index: 999;
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
 .movie-items .movie-item img {
     object-fit: cover;
     height: 350px;
 }
+
 .movie-item .title-in h6 {
     color: #fff;
 }
+
 .ht-header .top-search {
     width: 390px;
     border-radius: 300px;
 }
+
 header .top-search input {
     border-radius: 100px;
 }
+
 .mid_row {
     display: flex;
     align-items: center;
 }
+
 .movie-item-style-1 img {
     margin-right: 0;
     margin-bottom: 15px;
     height: 350px;
     width: 100%;
     background-color: #FFE;
+}
+
+
+
+
+
+
+
+
+
+
+body {
+    background: #0b1220;
+    color: #fff;
+    font-family: Arial, sans-serif;
+}
+
+
+
+
+.panel-dark {
+    background: #111a2e;
+    border: 1px solid #1f2a44;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.form-control {
+    background: #0e1626;
+    border: 1px solid #24314d;
+    color: #fff;
+}
+
+.label-pill {
+    display: inline-block;
+    padding: 5px 10px;
+    margin: 3px;
+    border-radius: 20px;
+    background: #1b2a44;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.btn-danger-custom {
+    background: #ff3b5c;
+    border: none;
+    padding: 12px 30px;
+    font-weight: bold;
+}
+
+.reset {
+    float: right;
+    color: #ff3b5c;
+    cursor: pointer;
+}
+
+.section-title {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+
+.panel-dark .suggest_item_box {
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #0b1222;
 }

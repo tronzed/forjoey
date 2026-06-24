@@ -11,3 +11,19 @@
 - Celebrities single
 - TV List 
 - TV Single
+
+
+
+--- Search
+
+- Genres
+- Runtime
+- Rating
+- Release Year
+- Language
+- Streaming Provider
+- Popularity
+- Keywords
+- Content Rating
+
+https://api.themoviedb.org/3/discover/movie?with_genres=28,878&with_runtime.gte=90&with_runtime.lte=150&vote_average.gte=7&vote_count.gte=100&primary_release_date.gte=2015-01-01&primary_release_date.lte=2025-12-31&with_original_language=en&sort_by=popularity.desc&with_watch_providers=8&watch_region=IN&with_cast=500&with_keywords=4379
