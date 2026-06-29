@@ -116,6 +116,16 @@ export default function Header() {
                                         celebrities{" "}
                                     </Link>
                                 </li>
+                                <li className="dropdown first">
+                                    <Link
+                                        to='/find'
+                                        className="btn btn-default dropdown-toggle lv1"
+                                        data-toggle="dropdown"
+                                        data-hover="dropdown"
+                                    >
+                                        Suggest{" "}
+                                    </Link>
+                                </li>
                                 {/* <li className="dropdown first">
                                     <Link
                                         to='/tv'

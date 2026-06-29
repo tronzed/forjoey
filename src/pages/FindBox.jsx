@@ -1,25 +1,18 @@
 import Footer from "../components/Footer";
 import Header from "../components/Header";
-import { useEffect, useState } from 'react'
-import { getMovie, getTv } from '../utils/function'
+import { suggest } from '../utils/function'
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 export default function FindBox() {
 
-    const loc = useLocation();
+    const nav = useNavigate();
 
-    const [movieListData, setMovieListData] = useState();
+    const getMovieData = async (item) => {
 
+        const res = await suggest(item);
 
-
-    const getMovieData = () => {
-        const res = loc.state;
-        setMovieListData(res);
+        nav('/suggest/', { state: res.results });
     }
-
-    useEffect(() => {
-        getMovieData();
-    }, [])
 
     return (
 
@@ -44,11 +37,30 @@ export default function FindBox() {
                                 {/* GENRES */}
                                 <div className="col-md-3">
                                     <div className="suggest_item_box">
-
                                         <div className="section-title">Genres</div>
-                                        <select className="form-control">
-                                            <option>Select genres</option>
+
+                                        <select className="form-control" multiple onChange={(e) => { getMovieData(e.target.value) }}>
+                                            <option value="28">Action</option>
+                                            <option value="12">Adventure</option>
+                                            <option value="16">Animation</option>
+                                            <option value="35">Comedy</option>
+                                            <option value="80">Crime</option>
+                                            <option value="99">Documentary</option>
+                                            <option value="18">Drama</option>
+                                            <option value="10751">Family</option>
+                                            <option value="14">Fantasy</option>
+                                            <option value="36">History</option>
+                                            <option value="27">Horror</option>
+                                            <option value="10402">Music</option>
+                                            <option value="9648">Mystery</option>
+                                            <option value="10749">Romance</option>
+                                            <option value="878">Science Fiction</option>
+                                            <option value="10770">TV Movie</option>
+                                            <option value="53">Thriller</option>
+                                            <option value="10752">War</option>
+                                            <option value="37">Western</option>
                                         </select>
+
                                         <div style={{ marginTop: 10 }}>
                                             <span className="label-pill">Action</span>
                                             <span className="label-pill">Adventure</span>
@@ -154,18 +166,7 @@ export default function FindBox() {
                                         </div>
                                     </div>
                                 </div>
-                                {/* KEYWORDS */}
-                                <div className="col-md-3">
-                                    <div className="suggest_item_box">
-                                        <div className="section-title">Keywords</div>
-                                        <input className="form-control" placeholder="Enter keywords" />
-                                        <div style={{ marginTop: 10 }}>
-                                            <span className="label-pill">Time Travel</span>
-                                            <span className="label-pill">Superhero</span>
-                                            <span className="label-pill">Space</span>
-                                        </div>
-                                    </div>
-                                </div>
+
                             </div>
                             <hr style={{ borderColor: "#22304d" }} />
                             <div className="text-center">

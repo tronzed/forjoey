@@ -10,6 +10,7 @@ import CelebsSingle from './pages/CelebsSingle'
 import MovieSingle from './pages/MovieSingle'
 import SearchList from './pages/SearchList'
 import FindBox from './pages/FindBox'
+import SuggestList from './pages/SuggestList'
 
 function App() {
 
@@ -27,6 +28,7 @@ function App() {
           <Route path='/celebsingle/:id' element={<CelebsSingle />} />
           <Route path='/search-list/' element={<SearchList />} />
           <Route path='/find/' element={<FindBox />} />
+          <Route path='/suggest/' element={<SuggestList />} />
           <Route path='*' element={<NoPage />} />
 
         </Routes>
