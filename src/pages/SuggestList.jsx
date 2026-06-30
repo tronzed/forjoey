@@ -13,9 +13,10 @@ export default function SearchList() {
 
 
     const getMovieData = async () => {
-        // const res = await suggest();
         setMovieListData(loc.state);
-        // setMovieListData(res.results);
+
+        console.log(loc.state);
+
     }
 
     useEffect(() => {
@@ -68,7 +69,7 @@ export default function SearchList() {
                                                     </h6>
                                                     <p className="rate">
                                                         <i className="ion-android-star" />
-                                                        <span>8.1</span> /10
+                                                        <span> { Math.round(item?.vote_average) } </span> /10
                                                     </p>
                                                 </div>
                                             </div>
