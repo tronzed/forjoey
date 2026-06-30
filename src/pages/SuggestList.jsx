@@ -15,6 +15,7 @@ export default function SearchList() {
     const getMovieData = async () => {
         // const res = await suggest();
         setMovieListData(loc.state);
+        // setMovieListData(res.results);
     }
 
     useEffect(() => {
@@ -24,7 +25,6 @@ export default function SearchList() {
     return (
 
         <>
-
 
             <Header />
 

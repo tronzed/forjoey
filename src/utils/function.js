@@ -49,7 +49,10 @@ export const search = async (name) => {
 }
 
 
-export const suggest = async (gen) => {
+export const suggest = async (movData) => {
+
+
+    console.log('suggest', movData);
 
     const mov = {}
 
@@ -58,22 +61,23 @@ export const suggest = async (gen) => {
     mov.maxRuntime = 150;
     mov.minRating = 7;
     mov.minVotes = 100;
-    mov.releaseFrom = "2015-01-01";
+    mov.releaseFrom = "2005-01-01";
     mov.releaseTo = "2025-12-31";
     mov.language = "en";
     mov.sortBy = "popularity.desc";
     mov.watchRegion = "IN";
 
     const res = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}` +
-        `&with_genres=${gen}` +
-        `&with_runtime.gte=${mov.minRuntime}` +
-        `&with_runtime.lte=${mov.maxRuntime}` +
-        `&vote_average.gte=${mov.minRating}` +
-        `&vote_count.gte=${mov.minVotes}` +
-        `&primary_release_date.gte=${mov.releaseFrom}` +
-        `&primary_release_date.lte=${mov.releaseTo}` +
-        `&with_original_language=${mov.language}` +
-        `&sort_by=${mov.sortBy}` +
+        `&with_genres=${movData.genres}` +
+        `&with_runtime.gte=${movData.minRuntime}` +
+        `&with_runtime.lte=${movData.maxRuntime}` +
+        `&vote_average.gte=${movData.minRating}` +
+        // `&vote_count.gte=${mov.minVotes}` +
+        `&primary_release_date.gte=${movData.releaseFrom + '-01-01'}` +
+        `&primary_release_date.lte=${movData.releaseTo + '-12-31'}` +
+        `&with_original_language=${movData.language}` +
+        `&sort_by=${movData.sortBy}` +
+        `&with_watch_providers=${movData.with_watch_providers}` +
         `&watch_region=${mov.watchRegion}`);
     const data = await res.json();
     return data;
