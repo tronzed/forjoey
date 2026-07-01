@@ -188,3 +188,19 @@ body {
     border-radius: 10px;
     background-color: #0b1222;
 }
+
+.common-hero {
+    height: 240px;
+}
+
+.hero h1 {
+    font-size: 25px;
+}
+
+.no_data {
+    padding: 35px 15px 65px;
+}
+
+.no_data h2 {
+    text-align: center;
+}

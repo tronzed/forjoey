@@ -281,14 +281,14 @@ export default function Header() {
                             <div className="row">
                                 <div className="col-md-12">
                                     <div className="hero-ct">
-                                        <h1>Movie Listing - Grid Fullwidth</h1>
+                                        <h1>{loc.pathname.split('/')}</h1>
                                         <ul className="breadcumb">
                                             <li className="active">
-                                                <a href="#">Home</a>
+                                                <Link to="/">Home</Link>
                                             </li>
                                             <li>
                                                 {" "}
-                                                <span className="ion-ios-arrow-right" /> movie listing
+                                                <span className="ion-ios-arrow-right" /> {loc.pathname.split('/')}
                                             </li>
                                         </ul>
                                     </div>

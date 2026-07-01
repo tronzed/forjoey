@@ -92,13 +92,13 @@ const Home = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="title-hd">
+                        <div className="title-hd hide_me">
                             <h2>on tv</h2>
                             <a href="#" className="viewall">
                                 View all <i className="ion-ios-arrow-right" />
                             </a>
                         </div>
-                        <div className="tabs">
+                        <div className="tabs  hide_me">
                             <div className="tab-content">
                                 <div id="tab21-h2" className="tab active">
                                     <div className="row">

@@ -22,7 +22,6 @@ export default function MovieList() {
 
         <>
 
-
             <Header />
 
             <div className="page-single">
@@ -31,7 +30,7 @@ export default function MovieList() {
                         <div className="col-md-12 col-sm-12 col-xs-12">
                             <div className="topbar-filter fw">
                                 <p>
-                                    Found <span>1,608 movies</span> in total
+                                    Found <span>{movieListData?.length} movies</span> in total
                                 </p>
                                 <label>Sort by:</label>
                                 <select>

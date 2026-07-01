@@ -56,26 +56,39 @@ export default function SearchList() {
                             <div className="row">
 
 
-                                {movieListData?.map((item, key) => (
-                                    <>
-                                        <div className="col-sm-2">
-                                            <div className="movie-item-style-2 movie-item-style-1">
-                                                <Link to={`/movSingle/${item?.id}`}>
-                                                    <img src={`https://image.tmdb.org/t/p/w500${item?.poster_path}`} alt="" />
-                                                </Link>
-                                                <div className="mv-item-infor">
-                                                    <h6>
-                                                        <a href="#">{item?.original_title}</a>
-                                                    </h6>
-                                                    <p className="rate">
-                                                        <i className="ion-android-star" />
-                                                        <span> { Math.round(item?.vote_average) } </span> /10
-                                                    </p>
+
+                                {movieListData?.length != 0 ? (
+                                    movieListData?.map((item, key) => (
+                                        <>
+                                            <div className="col-sm-2">
+                                                <div className="movie-item-style-2 movie-item-style-1">
+                                                    <Link to={`/movSingle/${item?.id}`}>
+                                                        <img src={`https://image.tmdb.org/t/p/w500${item?.poster_path}`} alt="" />
+                                                    </Link>
+                                                    <div className="mv-item-infor">
+                                                        <h6>
+                                                            <a href="#">{item?.original_title}</a>
+                                                        </h6>
+                                                        <p className="rate">
+                                                            <i className="ion-android-star" />
+                                                            <span> {Math.round(item?.vote_average)} </span> /10
+                                                        </p>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </>
+                                    ))
+                                ) : (
+                                    <>
+                                    
+                                    <div className="no_data">
+                                        <h2>No Movie Found</h2>
+                                    </div>
+                                    
                                     </>
-                                ))}
+                                )}
+
+
 
 
 
