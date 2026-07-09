@@ -72,13 +72,12 @@ export const suggest = async (movData) => {
         `&with_runtime.gte=${movData.minRuntime}` +
         `&with_runtime.lte=${movData.maxRuntime}` +
         `&vote_average.gte=${movData.minRating}` +
-        // `&vote_count.gte=${mov.minVotes}` +
         `&primary_release_date.gte=${movData.releaseFrom + '-01-01'}` +
         `&primary_release_date.lte=${movData.releaseTo + '-12-31'}` +
         `&with_original_language=${movData.language}` +
         `&sort_by=${movData.sortBy}` +
-        `&with_watch_providers=${movData.with_watch_providers}` +
-        `&watch_region=${mov.watchRegion}`);
+        `&watch_region=IN&with_watch_providers=${movData.with_watch_providers}&with_watch_monetization_types=flatrate`
+    );
     const data = await res.json();
     return data;
 }

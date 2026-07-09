@@ -215,7 +215,7 @@ export default function FindBox() {
                                         </div>
                                     </div>
                                     {/* STREAMING */}
-                                    <div className="col-md-3 hide_me">
+                                    <div className="col-md-3">
                                         <div className="suggest_item_box">
 
                                             <div className="section-title">Streaming Provider</div>
