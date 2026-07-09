@@ -204,3 +204,19 @@ body {
 .no_data h2 {
     text-align: center;
 }
+
+.provider_box img {
+    display: inline-block;
+    width: auto;
+    width: 32px;
+}
+
+.provider_box ul {
+    display: flex;
+    gap: 20px;
+}
+
+.provider_box ul img {
+    margin-right: 7px;
+    border-radius: 5px;
+}

@@ -16,6 +16,8 @@ export default function MovieSingle() {
     const [loadMoreImg, setLoadMoreImg] = useState(15);
     const [loadMoreVid, setLoadMoreVid] = useState(15);
 
+    const [movProvider, setMovProvider] = useState();
+
 
 
     const getData = async (id) => {
@@ -31,6 +33,8 @@ export default function MovieSingle() {
 
         setDirector(dataDirector);
         setWriter(dataWriter);
+
+        setMovProvider(res['watch/providers'].results.IN.flatrate);
 
     }
 
@@ -148,9 +152,25 @@ export default function MovieSingle() {
                         </div>
                         <div className="col-md-8 col-sm-12 col-xs-12">
                             <div className="movie-single-ct main-content">
+
+
+
                                 <h1 className="bd-hd">
                                     {movieData?.original_title} <span>{movieData?.release_date}</span>
                                 </h1>
+                                <div className="provider_box">
+                                    <ul>
+
+                                        {movProvider?.map((item, index) => (
+
+                                            <>
+                                                <li> <img src={`https://image.tmdb.org/t/p/w200/${item?.logo_path}`} alt="" /> {item?.provider_name} </li>
+                                            </>
+
+                                        ))}
+
+                                    </ul>
+                                </div>
                                 <div className="social-btn hide_me">
                                     <a href="#" className="parent-btn">
                                         <i className="ion-heart" /> Add to Favorite
