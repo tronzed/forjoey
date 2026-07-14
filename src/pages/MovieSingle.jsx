@@ -1,7 +1,7 @@
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
-import { getSingleMovie } from '../utils/function'
+import { getSingleMovie, watchListAdd } from '../utils/function'
 import { useEffect, useState } from "react";
 import { Link, parsePath, useParams } from "react-router-dom";
 
@@ -35,6 +35,13 @@ export default function MovieSingle() {
         setWriter(dataWriter);
 
         setMovProvider(res['watch/providers'].results.IN.flatrate);
+
+    }
+
+
+    const addToWatchList = (data) => {
+
+        watchListAdd(data);
 
     }
 
@@ -171,30 +178,11 @@ export default function MovieSingle() {
 
                                     </ul>
                                 </div>
-                                <div className="social-btn hide_me">
-                                    <a href="#" className="parent-btn">
-                                        <i className="ion-heart" /> Add to Favorite
-                                    </a>
-                                    <div className="hover-bnt">
-                                        <a href="#" className="parent-btn">
-                                            <i className="ion-android-share-alt" />
-                                            share
-                                        </a>
-                                        <div className="hvr-item">
-                                            <a href="#" className="hvr-grow">
-                                                <i className="ion-social-facebook" />
-                                            </a>
-                                            <a href="#" className="hvr-grow">
-                                                <i className="ion-social-twitter" />
-                                            </a>
-                                            <a href="#" className="hvr-grow">
-                                                <i className="ion-social-googleplus" />
-                                            </a>
-                                            <a href="#" className="hvr-grow">
-                                                <i className="ion-social-youtube" />
-                                            </a>
-                                        </div>
-                                    </div>
+                                <div className="social-btn">
+                                    <button onClick={(e) => { addToWatchList({ id: movieData.id, name: movieData.title }) }} className="parent-btn">
+                                        <i className="ion-heart" />Add to watchlist
+                                        {/* <i className="ion-ios-heart-outline" />Add to watchlist */}
+                                    </button>
                                 </div>
                                 <div className="movie-rate">
                                     <div className="rate">
@@ -203,22 +191,13 @@ export default function MovieSingle() {
                                         </p>
                                     </div>
                                     <div className="rate-star">
-
                                         {
-
                                             Array.from({ length: 10 }, (_, index) => (
-
                                                 <>
                                                     {index + 1 <= Math.round(movieData?.vote_average) ? <i className="ion-ios-star" /> : <i className="ion-ios-star-outline" />}
-
                                                 </>
-
                                             ))
-
                                         }
-
-
-
                                     </div>
                                 </div>
                                 <div className="movie-tabs">

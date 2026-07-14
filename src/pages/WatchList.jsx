@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import { getMovie, getTv, watchListAdd } from '../utils/function'
 import { Link } from "react-router-dom";
 
-export default function MovieList() {
+export default function WatchList() {
 
     const [movieListData, setMovieListData] = useState();
 

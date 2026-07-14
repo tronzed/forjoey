@@ -81,3 +81,20 @@ export const suggest = async (movData) => {
     const data = await res.json();
     return data;
 }
+
+
+
+
+// watch list
+
+export const watchListAdd = (data) => {
+
+    fetch('https://forjoey-default-rtdb.firebaseio.com/watch_list.json', {
+
+        method: 'POST',
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+
+    });
+
+}   

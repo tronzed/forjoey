@@ -11,6 +11,7 @@ import MovieSingle from './pages/MovieSingle'
 import SearchList from './pages/SearchList'
 import FindBox from './pages/FindBox'
 import SuggestList from './pages/SuggestList'
+import WatchList from './pages/WatchList'
 
 function App() {
 
@@ -29,6 +30,7 @@ function App() {
           <Route path='/search-list/' element={<SearchList />} />
           <Route path='/find/' element={<FindBox />} />
           <Route path='/suggest/' element={<SuggestList />} />
+          <Route path='/watch-list/' element={<WatchList />} />
           <Route path='*' element={<NoPage />} />
 
         </Routes>
