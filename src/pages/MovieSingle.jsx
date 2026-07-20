@@ -1,7 +1,7 @@
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
-import { getSingleMovie, watchListAdd } from '../utils/function'
+import { getSingleMovie, watchListAdd, WatchListCheckAdded } from '../utils/function'
 import { useEffect, useState } from "react";
 import { Link, parsePath, useParams } from "react-router-dom";
 
@@ -15,6 +15,7 @@ export default function MovieSingle() {
     const [director, setDirector] = useState();
     const [loadMoreImg, setLoadMoreImg] = useState(15);
     const [loadMoreVid, setLoadMoreVid] = useState(15);
+    const [checkWatchList, setCheckWatchList] = useState(15);
 
     const [movProvider, setMovProvider] = useState();
 
@@ -23,6 +24,10 @@ export default function MovieSingle() {
     const getData = async (id) => {
 
         const res = await getSingleMovie(id);
+
+        const check = await WatchListCheckAdded(id);
+
+        setCheckWatchList(check)
 
         setMovieData(res)
 
@@ -179,10 +184,26 @@ export default function MovieSingle() {
                                     </ul>
                                 </div>
                                 <div className="social-btn">
-                                    <button onClick={(e) => { addToWatchList({ id: movieData.id, name: movieData.title }) }} className="parent-btn">
-                                        <i className="ion-heart" />Add to watchlist
-                                        {/* <i className="ion-ios-heart-outline" />Add to watchlist */}
-                                    </button>
+
+                                    {
+                                        checkWatchList == false ?
+                                            (
+                                                <button onClick={(e) => { addToWatchList({ id: movieData.id, name: movieData.title }) }} className="parent-btn">
+                                                    <i className="ion-heart" />Add to watchlist
+                                                    {/* <i className="ion-ios-heart-outline" />Add to watchlist */}
+                                                </button>
+
+                                            ) : (
+
+                                                <button onClick={(e) => { addToWatchList({ id: movieData.id, name: movieData.title }) }} className="parent-btn">
+                                                    <i className="ion-heart" />Remove from watchlist
+                                                </button>
+                                            )
+                                    }
+
+
+
+
                                 </div>
                                 <div className="movie-rate">
                                     <div className="rate">

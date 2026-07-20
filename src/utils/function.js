@@ -84,17 +84,44 @@ export const suggest = async (movData) => {
 
 
 
-
-// watch list
+// add to watch list  
 
 export const watchListAdd = (data) => {
-
     fetch('https://forjoey-default-rtdb.firebaseio.com/watch_list.json', {
-
         method: 'POST',
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data)
-
     });
+}
 
-}   
+
+// get watch list 
+
+export const watchListIDGet = async (id) => {
+    const res = await fetch(`https://forjoey-default-rtdb.firebaseio.com/watch_list/.json`);
+    const data = await res.json();
+
+    const data2 = Object.values(data);
+
+    return data2;
+}
+
+
+// get watch list 
+export const watchListGet = async (id) => {
+    const res = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}`);
+    const data = await res.json();
+    return data;
+}
+
+
+// check movie already add in watch list 
+export const WatchListCheckAdded = async (id) => {
+    const res = await fetch(`https://forjoey-default-rtdb.firebaseio.com/watch_list/.json`);
+    const data = await res.json();
+
+    const check = Object.values(data).some((i) => i.id == id);
+
+    return check;
+
+}

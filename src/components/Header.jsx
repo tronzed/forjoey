@@ -126,6 +126,16 @@ export default function Header() {
                                         Suggest{" "}
                                     </Link>
                                 </li>
+                                <li className="dropdown first">
+                                    <Link
+                                        to='/watch-list'
+                                        className="btn btn-default dropdown-toggle lv1"
+                                        data-toggle="dropdown"
+                                        data-hover="dropdown"
+                                    >
+                                        Watch List{" "}
+                                    </Link>
+                                </li>
                                 {/* <li className="dropdown first">
                                     <Link
                                         to='/tv'

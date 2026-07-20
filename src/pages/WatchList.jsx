@@ -1,26 +1,39 @@
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { useEffect, useState } from 'react'
-import { getMovie, getTv, watchListAdd } from '../utils/function'
-import { Link } from "react-router-dom";
+import { watchListIDGet, watchListGet } from '../utils/function'
+import { data, Link } from "react-router-dom";
 
 export default function WatchList() {
 
     const [movieListData, setMovieListData] = useState();
 
-    const getMovieData = async () => {
-        const res = await getMovie();
-        setMovieListData(res);
+
+    const getMovieIdData = async () => {
+
+        const dataBox = [];
+
+        const res = await watchListIDGet();
+
+        for (const item of res) {
+            let box = await watchListGet(item.id);
+            dataBox.push(box);
+        }
+
+        setMovieListData(dataBox);
+
     }
 
+
     useEffect(() => {
-        getMovieData();
+
+        getMovieIdData();
+
     }, [])
 
     return (
 
         <>
-
             <Header />
 
             <div className="page-single">
