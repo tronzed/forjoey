@@ -86,21 +86,52 @@ export const suggest = async (movData) => {
 
 // add to watch list  
 
-export const watchListAdd = (data) => {
-    fetch('https://forjoey-default-rtdb.firebaseio.com/watch_list.json', {
-        method: 'POST',
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data)
-    });
+export const watchListAdd = async (data) => {
+
+
+    try {
+
+        const res = await fetch('https://forjoey-default-rtdb.firebaseio.com/watch_list.json', {
+            method: 'POST',
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data)
+        });
+
+        if(!res.ok){
+            throw new Error('unable add to watch list')
+        }
+
+
+    } catch (error) {
+        console.error(error);
+    }
+
+
+
 }
 
 
 // delete from watch list 
-export const watchListDelete = (id) => {
+export const watchListDelete = async (id) => {
 
-    fetch(`https://forjoey-default-rtdb.firebaseio.com/watch_list/${id}.json`, {
-        method: 'DELETE'
-    })
+
+    try {
+
+        const res = await fetch(`https://forjoey-default-rtdb.firebaseio.com/watch_list/${id}.json`, {
+            method: 'DELETE'
+        })
+
+        if (!res.ok) {
+            throw new Error('unable to remove data')
+        }
+
+    } catch (error) {
+
+        console.error(error);
+
+    }
+
+
 
 }
 

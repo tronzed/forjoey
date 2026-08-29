@@ -42,15 +42,14 @@ export default function MovieSingle() {
 
     }
 
-    const addToWatchList = (data) => {
-        watchListAdd(data);
+    const addToWatchList = async (data) => {
+        await watchListAdd(data);
         getData(id);
     }
 
-    const delToWatchList = (data) => {
-        watchListDelete(data);
+    const delToWatchList = async (data) => {
+        await watchListDelete(data);
         getData(id);
-
     }
 
     const [overviewTab, setOverviewTab] = useState(true);
