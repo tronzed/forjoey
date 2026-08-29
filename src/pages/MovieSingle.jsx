@@ -1,7 +1,7 @@
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
-import { getSingleMovie, watchListAdd, WatchListCheckAdded } from '../utils/function'
+import { getSingleMovie, watchListAdd, WatchListCheckAdded, watchListDelete } from '../utils/function'
 import { useEffect, useState } from "react";
 import { Link, parsePath, useParams } from "react-router-dom";
 
@@ -29,34 +29,35 @@ export default function MovieSingle() {
 
         setCheckWatchList(check)
 
-        setMovieData(res)
+        console.log(check);
 
-        console.log(res, 'ddd');
+        setMovieData(res)
 
         const dataDirector = res?.credits?.crew.filter((item) => (item?.job === 'Director'))
         const dataWriter = res?.credits?.crew.filter((item) => (item?.job === 'Screenplay'))
 
         setDirector(dataDirector);
         setWriter(dataWriter);
-
         setMovProvider(res['watch/providers'].results.IN.flatrate);
 
     }
 
-
     const addToWatchList = (data) => {
-
         watchListAdd(data);
-
+        getData(id);
     }
 
+    const delToWatchList = (data) => {
+        watchListDelete(data);
+        getData(id);
+
+    }
 
     const [overviewTab, setOverviewTab] = useState(true);
     const [reviewsTab, setReviewsTab] = useState(false);
     const [castTab, setCastTab] = useState(false);
     const [mediaTab, setMediaTab] = useState(false);
     const [relatedTab, setRelatedTab] = useState(false);
-
 
     const tabHandle = (pass) => {
 
@@ -186,7 +187,7 @@ export default function MovieSingle() {
                                 <div className="social-btn">
 
                                     {
-                                        checkWatchList == false ?
+                                        checkWatchList?.check == false ?
                                             (
                                                 <button onClick={(e) => { addToWatchList({ id: movieData.id, name: movieData.title }) }} className="parent-btn">
                                                     <i className="ion-heart" />Add to watchlist
@@ -195,7 +196,7 @@ export default function MovieSingle() {
 
                                             ) : (
 
-                                                <button onClick={(e) => { addToWatchList({ id: movieData.id, name: movieData.title }) }} className="parent-btn">
+                                                <button onClick={(e) => { delToWatchList(checkWatchList?.dataId) }} className="parent-btn">
                                                     <i className="ion-heart" />Remove from watchlist
                                                 </button>
                                             )

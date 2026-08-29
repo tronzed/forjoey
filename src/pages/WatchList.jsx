@@ -3,10 +3,12 @@ import Header from "../components/Header";
 import { useEffect, useState } from 'react'
 import { watchListIDGet, watchListGet } from '../utils/function'
 import { data, Link } from "react-router-dom";
+import Loader from "../components/Loader";
 
 export default function WatchList() {
 
     const [movieListData, setMovieListData] = useState();
+    const [loader, setLoader] = useState(true);
 
 
     const getMovieIdData = async () => {
@@ -21,7 +23,7 @@ export default function WatchList() {
         }
 
         setMovieListData(dataBox);
-
+        setLoader(false);
     }
 
 
@@ -35,6 +37,8 @@ export default function WatchList() {
 
         <>
             <Header />
+
+            <Loader status={loader}/>
 
             <div className="page-single">
                 <div className="container-fluid">

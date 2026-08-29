@@ -95,14 +95,21 @@ export const watchListAdd = (data) => {
 }
 
 
-// get watch list 
+// delete from watch list 
+export const watchListDelete = (id) => {
 
+    fetch(`https://forjoey-default-rtdb.firebaseio.com/watch_list/${id}.json`, {
+        method: 'DELETE'
+    })
+
+}
+
+
+// get watch list 
 export const watchListIDGet = async (id) => {
     const res = await fetch(`https://forjoey-default-rtdb.firebaseio.com/watch_list/.json`);
     const data = await res.json();
-
     const data2 = Object.values(data);
-
     return data2;
 }
 
@@ -118,10 +125,16 @@ export const watchListGet = async (id) => {
 // check movie already add in watch list 
 export const WatchListCheckAdded = async (id) => {
     const res = await fetch(`https://forjoey-default-rtdb.firebaseio.com/watch_list/.json`);
+
     const data = await res.json();
 
-    const check = Object.values(data).some((i) => i.id == id);
+    const data2 = Object.entries(data ?? {}).map(([key, value]) => ({
+        movDataId: key,
+        ...value
+    }))
 
-    return check;
+    const check = Object.values(data ?? {}).some((i) => i.id == id);
+    const filterData = Object.values(data2 ?? {}).filter((i) => i.id == id);
 
+    return { check: check, dataId: filterData[0]?.movDataId };
 }
