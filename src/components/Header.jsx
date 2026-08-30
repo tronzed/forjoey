@@ -166,10 +166,10 @@ export default function Header() {
                                     </div>
                                 </li>
                                 <li className="loginLink">
-                                    <Link to="#">LOG In</Link>
+                                    <Link to="/login">LOG In</Link>
                                 </li>
                                 <li className="btn signupLink">
-                                    <Link to="#">sign up</Link>
+                                    <Link to="/sign-up">sign up</Link>
                                 </li>
                             </ul>
                         </div>

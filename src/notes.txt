@@ -34,5 +34,5 @@ add presets ( Best balance,Trending blockbusters,Hidden gems )
 - responsive
 - login system
 - watch list
-- show movie on which pletform countery wise
+- show movies on which pletform countery wise
 
